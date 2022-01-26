@@ -10,27 +10,60 @@
 </head>
 <body>
     <div id="first">
-        <h1>Wars of Vogrora</h1>
+        <h1 id="title">Wars <br> of <br> Vogrora</h1>
         <button id="start">Start Game</button>
     </div>
-    <div id="create">
-        <div class="story">
-            <p class="story"></p>
+    <div id="story">
+        <div class="story-text">
+            <p class="story">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Ea velit nobis reprehenderit, doloremque adipisci incidunt repellendus. 
+                Molestias labore quam sed aspernatur temporibus cupiditate sequi error 
+                ab eum optio, reiciendis ipsam! Enim nesciunt pariatur laboriosam a 
+                quaerat recusandae odio vero, quam hic. Rerum quidem vitae ipsa illo, 
+                at debitis nobis mollitia aut quibusdam dolor laborum quos? Similique 
+                inventore eius architecto nulla! Vel libero, aliquam iure veritatis sit 
+                voluptas fugiat eius ex, minus quibusdam quisquam expedita accusamus 
+                non asperiores repellat natus animi provident numquam ea commodi, 
+                suscipit unde. Corporis possimus impedit rerum!</p>
         </div>
-        <h3>Create your Character</h3>
-        <button>Gender</button>
-        <button>Race</button>
-        <button>Class</button>
-        <input type="What is your name?">
+        <div class="story-animation">
+            <h2>animation here</h2>
+        </div>
     </div>
-    <div class="main">
+    <div id="create">
+        <div class="create-char">
+            <h3>Create your Character</h3>
+            <h4>Gender</h4>
+            <button>Male</button>
+            <button>Female</button><br>
+            <h4>Race</h4>
+            <button>Human</button>
+            <button>Elf</button>
+            <button>Dwarf</button><br>
+            <button>Class</button><br>
+            <label for="name">What is your Name?</label>
+            <input type="text" name="name">
+            <input type="submit" value="submit">
+        </div>
+        <div id="char-image">
+            <h2>image here</h2>
+        </div>
+    </div>
+    <div id="main">
         <div class="character">
-            <p class="name">Name: <span class="name"></span></p>
-            <p class="race">Race: <span class="race"></span></p>
-            <p class="class">Class: <span class="class"></span></p>
-            <p class="energy">Energy: <span class="energy"></span></p>
-            <p class="money">$<span class="money"></span></p>
-            <p class="stats"></p> <!-- mouseover(atck, def, int, sta, agi) -->
+            <h3>Character Picture</h3>
+            <p class="char-info">Name: <span class="name">jshdbcnoasdjlxfhbcisyjhbcssbivdhfkjs</span><br>
+            Race: <span class="race"></span><br>
+            Class: <span class="class"></span><br>
+            Energy: <span class="energy"></span><br>
+            $<span class="money"></span><br>
+            stats</p> <!-- mouseover(atck, def, int, sta, agi) -->
+        </div>
+        <div class="buttons">
+            <button id="store">store</button>
+            <button id="fight">fight</button>
+            <button id="eat">eat</button>
+            <button id="work">work</button>
         </div>
     </div>
     

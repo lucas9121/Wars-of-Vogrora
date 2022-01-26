@@ -1,7 +1,7 @@
 Wars of Vogrora
 
 Game description:
-Player can choose one of three races when creating a Character (elf, human, dwarf) that have default skills to them (agility, stamina, intelect). Each race can choose a class speciealty(range, melee, magic) before starting the game. Battle main vilain and his army (faction with member of each race) with your character. There are 10 battles before reaching main vilain. Main vilain has higher hp, attack, and defense then other enemies. Each race has a particular skill they are better in. The skill influences their advantage on work/eat results. Work grants money and uses energy. The only way to replinish energy is by eating food. Food has to be bought with some of the money you have. Money can also be used to purchase items in th store that will help you in a battle. 
+Player can choose one of three races when creating a Character (elf, human, dwarf) that have default skills to them (recovery, stamina, intelect). Each race can choose a class speciealty(range, melee, magic) before starting the game. Battle main vilain and his army (faction with member of each race) with your character. There are 10 battles before reaching main vilain. Main vilain has higher hp, attack, and defense then other enemies. Each race has a particular skill they are better in. The skill influences their advantage on work/eat results. Work grants money and uses energy. The only way to replinish energy is by eating food. Food has to be bought with some of the money you have. Money can also be used to purchase items in th store that will help you in a battle. 
             
 attack (hp):
 - attack power is 10 + (player attack - enemy defense)
@@ -10,10 +10,10 @@ attack (hp):
 - Elves middle
 work (energy):
 - grants money
-- agility = less money spent on eating (can recover energy faster)
+- recovery = replenish energy faster (less money spent on eating) 
 - intellect = more money earned while working
-- stamina = less energy spent while working (can work longer and make more money)
-- elves > agility 
+- stamina = less energy spent while working (can work longer)
+- elves > recovery
 - dwarves > stamina 
 - humans > intelect 
 store:

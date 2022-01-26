@@ -1,0 +1,122 @@
+body > div#first {
+    height: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: right; /* aligns item top to bottom on column*/
+    align-items: center;  /* aligns items left to right  on column*/
+    border: 2px solid red;
+    padding: 8px;
+    background-color: black;
+}
+
+h1#title{
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 150px;
+    text-shadow: 10px 20px 5px red;
+}
+button#start {
+    color: red;
+    text-transform: uppercase;
+    font-size: 70px;
+    background: transparent;
+}
+body > div#story {
+    height: 900px;
+    border: solid orange;
+    display: flex;
+    flex-direction: column;
+}
+.story-text {
+    flex: 1;
+    background-color: honeydew;
+    text-align: left;
+    font-size: large;
+}
+.story-animation {
+    flex: 3;
+    background-color: khaki;
+}
+body > div#create {
+    height: 900px;
+    display: flex;
+    flex-direction: row;
+    border: solid purple;
+    padding: 2px;
+}
+div.create-char {
+    flex: 1;
+    text-align: center;
+    background-color: lavender;
+}
+div#char-image {
+    flex: 1;
+    background-color: grey;
+}
+.create-char > h3 {
+    color: green;
+}
+body > div#main {
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: right; */
+    justify-content: space-between;
+    /* align-items: center; */
+    border: solid black;
+    background-color: cyan;
+}
+div.character {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    justify-content:flex-end;
+    border: dotted darkblue;
+    background-color: chocolate;
+    /* padding: 0 10px;
+    margin-bottom: 660px; */
+}
+div.buttons {
+    display: flex;;
+    justify-content: stretch;
+    /* border: solid black; */
+    background-color: white;
+    padding: 3px 0px;
+}
+#store{
+    flex: 2;
+    color: red;
+    font-size: 250%;
+    text-transform: capitalize;
+    padding: 10px 0px;
+}
+#fight {
+    flex: 4;
+    font-size: 250%;
+    background-color: transparent;
+    border: none;
+    text-transform: capitalize;
+}
+#eat {
+    flex: 1;
+    font-size: 150%;
+    text-transform: capitalize;
+    background-color: transparent;
+    /* padding: 50px; */
+}
+#work {
+    flex:1;
+    font-size: 150%;
+    text-transform: capitalize;
+}
+.remove{
+    display: none;
+}
+.display{
+    display: flex;
+}
+.popUp {
+    display: flex!important;
+}
