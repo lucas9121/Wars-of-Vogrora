@@ -26,7 +26,7 @@ button#start {
 body > div#story {
     height: 900px;
     border: solid orange;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 .story-text {
@@ -47,67 +47,297 @@ body > div#create {
     padding: 2px;
 }
 div.create-char {
-    flex: 1;
-    text-align: center;
-    background-color: lavender;
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    background-color: black;
+    line-height: 15px;
 }
+.create-char > h2 {
+    font-size: 50px;
+    text-align: center;
+    color: white;
+}
+.create-char > h4 {
+    font-size: 30px;
+    margin: 50px 0px 20px 0;
+    text-align: center;
+    color: white;
+}
+
+.char-gender {
+    display: flex;
+    border: solid black;
+    margin-bottom: 20px;
+    
+}
+.char-gender > button {
+    flex: 1;
+    font-size: 1.5em;
+    color: white;
+    background-color: transparent;
+}
+.char-race{
+    display: flex;
+    border: solid black;
+    margin-bottom: 20px;
+}
+.char-race > button {
+    flex: 1;
+    font-size: 1.5em;
+    color: white;
+    background-color: transparent;
+}
+.char-class {
+    display: flex;
+    border: solid black;
+    margin-bottom: 20px;
+}
+.char-class > button {
+    flex: 1;
+    font-size: 1.5em;
+    color: white;
+    background-color: transparent;
+}
+.create-char > label {
+    margin-top: 110px;
+    font-size: 3em;
+    text-align: center;
+    color: white;
+}
+.create-char > input:nth-of-type(1){
+    border: double;
+    background-color: white;
+    text-align: center;
+    color: black;
+    height: 30px;
+    font-size: 1em;
+    margin: 10px 80px;
+}
+.create-char > input:nth-of-type(2){
+    margin-top: 120px;
+    font-size: 3em;
+    color: white;
+    background-color: transparent;
+}
+
 div#char-image {
     flex: 1;
     background-color: grey;
+    background-image: url("https://i.imgur.com/TOY8wCY.jpg" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
-.create-char > h3 {
-    color: green;
-}
+
 body > div#main {
     height: 900px;
     display: flex;
     flex-direction: column;
-    /* flex-direction: right; */
     justify-content: space-between;
-    /* align-items: center; */
     border: solid black;
-    background-color: cyan;
+    background-image: url("https://i.imgur.com/abw3DhZ.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 div.character {
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: 250px;
     justify-content:flex-end;
     border: dotted darkblue;
     background-color: chocolate;
-    /* padding: 0 10px;
-    margin-bottom: 660px; */
 }
 div.buttons {
     display: flex;;
     justify-content: stretch;
-    /* border: solid black; */
-    background-color: white;
+    background-color: black;
     padding: 3px 0px;
+}
+div.store {
+    display: none;
+    flex-direction: column;
+    border: solid black;
+    background-color: white;
+    height: 600px;
+    margin: 0 100px;
+}
+.store > button {
+    background-color: turquoise;
+    width: 50px;
+    margin-right: 832px;
+}
+.store > h2 {
+    flex: 1;
+    color: red;
+    font-size: 3em;
+    margin: 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.store > #atk-potion {
+    border: solid yellowgreen;
+    flex: 3;
+}
+#atk-potion > p {
+    color: black;
+}
+#atk-potion > button {
+    background-color: black;
+    color: white;
+    font-size: 1.5em;
+}
+#atk-potion > button:hover {
+    color: red
+}
+.store > #def-potion {
+    border: solid peru;
+    flex: 3;
+}
+#def-potion > p {
+    color: black;
+}
+#def-potion > button {
+    background-color: black;
+    color: white;
+    font-size: 1.5em;
+}
+#def-potion > button:hover {
+    color: red;
+}
+div.fight {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid black;
+    background-color: white;
+    height: 600px;
+    margin: 0 100px;
+}
+.fight > button {
+    background-color: turquoise;
+    width: 50px;
+}
+.fight > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    height: 10vh;
+    background-color: rgb(0, 0, 208, .2);   
+}
+.fight > div > .fight-text {
+    overflow: auto;
+}
+#first-text {
+    list-style-type: none;
+}
+#second-text {
+    font-size: 1.5em;
+}
+.fight > div > button {
+    color: black;
+    font-size: 1.5em;
+    background-color: white;
+    text-transform: uppercase;
+}
+.fight > div > button:hover {
+    color:red;
+}
+
+div.eat {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid black;
+    background-color: white;
+    height: 600px;
+    margin: 0 100px;
+}
+.eat > button {
+    background-color: turquoise;
+    width: 50px;
+}
+.eat > div:nth-of-type(1) {
+    border: solid purple;
+    flex: 4;
+}
+.eat > div:nth-of-type(2) {
+    flex: 1;
+    background-color: rgba(0,0,0,.8);
+    overflow: auto;
+}
+#eat-list {
+    list-style-type: none;
+    color: white;
+    text-align: center;
+}
+.eat > div > #eat-text {
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+div.work {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid black;
+    background-color: white;
+    height: 600px;
+    margin: 0 100px;
+}
+.work > button {
+    background-color: turquoise;
+    width: 50px;
+}
+.work > div:nth-of-type(1) {
+    border: solid purple;
+    flex: 4;
+}
+.work > div:nth-of-type(2) {
+    flex: 1;
+    background-color: rgba(0,0,0,.8);
+    overflow: auto;
+}
+#work-list {
+    list-style-type: none;
+    color: white;
+    text-align: center;
+}
+.work > div >  #work-text {
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
 }
 #store{
     flex: 2;
-    color: red;
+    color: white;
+    background-color: transparent;
     font-size: 250%;
     text-transform: capitalize;
     padding: 10px 0px;
 }
 #fight {
     flex: 4;
-    font-size: 250%;
+    color: white;
     background-color: transparent;
-    border: none;
+    font-size: 250%;
     text-transform: capitalize;
 }
 #eat {
     flex: 1;
+    color: white;
+    background-color: transparent;
     font-size: 150%;
     text-transform: capitalize;
     background-color: transparent;
-    /* padding: 50px; */
 }
 #work {
     flex:1;
+    color: white;
+    background-color: transparent;
     font-size: 150%;
     text-transform: capitalize;
 }
@@ -117,6 +347,6 @@ div.buttons {
 .display{
     display: flex;
 }
-.popUp {
+.pop-up {
     display: flex!important;
 }

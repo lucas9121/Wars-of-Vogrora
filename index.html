@@ -32,32 +32,88 @@
     </div>
     <div id="create">
         <div class="create-char">
-            <h3>Create your Character</h3>
+            <h2>Character Creation</h2>
             <h4>Gender</h4>
-            <button>Male</button>
-            <button>Female</button><br>
+            <div class="char-gender">
+                <button>Male</button>
+                <button>Female</button>
+            </div>
             <h4>Race</h4>
-            <button>Human</button>
-            <button>Elf</button>
-            <button>Dwarf</button><br>
-            <button>Class</button><br>
+            <div class="char-race">
+                <button>Human</button>
+                <button>Elf</button>
+                <button>Dwarf</button>
+            </div>
+            <h4>Fighting Class</h4>
+            <div class="char-class">
+                <button>Melee</button>
+                <button>Range</button>
+                <button>Magic</button>
+            </div>
             <label for="name">What is your Name?</label>
             <input type="text" name="name">
-            <input type="submit" value="submit">
+            <input type="submit" value="create character">
         </div>
         <div id="char-image">
-            <h2>image here</h2>
+            <p>text test</p>
         </div>
     </div>
     <div id="main">
         <div class="character">
             <h3>Character Picture</h3>
-            <p class="char-info">Name: <span class="name">jshdbcnoasdjlxfhbcisyjhbcssbivdhfkjs</span><br>
+            <p class="char-info">Name: <span class="name"></span><br>
             Race: <span class="race"></span><br>
             Class: <span class="class"></span><br>
             Energy: <span class="energy"></span><br>
             $<span class="money"></span><br>
-            stats</p> <!-- mouseover(atck, def, int, sta, agi) -->
+            <span class="stat"></span></p>
+        </div>
+        <div class="store">
+            <button>close</button>
+            <h2>store</h2>
+            <div id="atk-potion">
+                <h4>atack potion image</h4>
+                <p>atack potion $125</p>
+                <button>Buy</button>
+                <p></p>
+            </div>
+            <div id="def-potion">
+                <h4>defense potion image</h4>
+                <p>defense potion $125</p>
+                <button>Buy</button>
+                <p></p>
+            </div>
+        </div>
+        <div class="fight">
+            <button>close</button>
+            <div>
+                <button>attack</button>
+                <div class="fight-text">
+                    <ul id="first-text"></ul>
+                    <p id="second-text"></p>
+                </div>
+                <button>retreat</button>
+            </div>
+        </div>
+        <div class="work">
+            <button>close</button>
+            <div>
+                animation
+            </div>
+            <div>
+                <ul id="work-list"></ul>
+                <p id="work-text"></p>
+            </div>
+        </div>
+        <div class="eat">
+            <button>close</button>
+            <div>
+                animation
+            </div>
+            <div>
+                <ul id="eat-list"></ul>
+                <p id="eat-text"></p>
+            </div>
         </div>
         <div class="buttons">
             <button id="store">store</button>
