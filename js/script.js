@@ -35,12 +35,16 @@ const workBtn = document.querySelector('#work')
 //Store pop up DOM
 const storePg = document.querySelector('.store')
 const storeClose = document.querySelector('.store > button')
+const atkBuyBtn = document.querySelector('#atk-potion > div > button')
+const atkPtnTxt = document.querySelector('#atk-potion > div > p:nth-of-type(2)')
+const defBuyBtn = document.querySelector('#def-potion > div > button')
+const defPtnTxt = document.querySelector('#def-potion > div > p:nth-of-type(2)')
 
 //Fight pop up
 const fightPg = document.querySelector('.fight')
 const fightClose = document.querySelector('.fight > button')
 const atckBtn = document.querySelector('.fight > div > button:nth-of-type(1)')
-const retreatBtn = document.querySelector('.fight > dic > button:nth-of-type(2)')
+const retreatBtn = document.querySelector('.fight > div > button:nth-of-type(2)')
 const firstTxt = document.querySelector('#first-text')
 const secTxt = document.querySelector('#second-text')
 
@@ -69,8 +73,9 @@ class Character {
   //story attack 
   attackMode(other) {
     let playerAtck = Math.round(10 + (this.attack - other.defense));
-    let enemyAtck = Math.round(5 + (other.attack - this.defense));
-    for(let i = 0; i < 50; i++){
+    let enemyAtck = Math.round(6 + (other.attack - this.defense));
+    console.log(this.hp)
+    for(let i = 0; i < 100; i++){
       if(this.hp > 0 && other.hp <= 0){
         secTxt.textContent = `${other.name} was defeated! ${this.name} won`
         break
@@ -79,9 +84,13 @@ class Character {
         break
       }
       if(this.hp > 0 && other.hp > 0){
-        other.hp -= playerAtck
+        if(playerAtck < 1){//wouldn't reduce enemy hp, if negative it would add
+          playerAtck = 1
+        }
         if(playerAtck > other.hp){//hp would equal a negative number
           other.hp = 0
+        } else {
+          other.hp -= playerAtck
         }
         const plLi1 = document.createElement('li')
         plLi1.textContent = `${this.name} attacked ${other.name} and dealt ${playerAtck} damage`
@@ -91,9 +100,13 @@ class Character {
         firstTxt.appendChild(plLi2)
       } 
       if(this.hp > 0 && other.hp > 0){
-        this.hp -= enemyAtck
+        if(enemyAtck < 1){
+          enemyAtck = 1
+        }
         if(enemyAtck > this.hp){
           this.hp = 0
+        } else {
+          this.hp -= enemyAtck
         }
         const enLi1 = document.createElement('li')
         enLi1.textContent = `${other.name} attacked ${this.name} and dealt ${enemyAtck} damage`
@@ -109,15 +122,14 @@ class Character {
     let workPrice = 13 - this.sta
     if(workPrice > this.energy){
       workTxt.textContent = `You have insuficient energy. Eat some food to replenish your energy`
-      // console.log(`You have insuficient energy. Eat some food to replenish your energy`)
+      workTxt.style.color = 'white'
       return
     }
     for(let i=0; i<100; i++){
       if(this.energy > 0){
         if(workPrice > this.energy ){
           workTxt.textContent = `You made a total of $${this.money}`
-          // console.log(`You made a total of $${this.money}`)
-          // console.log(`You have ${this.energy} energy remaining`)
+          workTxt.style.color = 'red'
           return
         } else {
           this.energy -= workPrice;
@@ -128,25 +140,21 @@ class Character {
           const li2 = document.createElement('li')
           li2.textContent = `You now have $${this.money} and ${this.energy} energy remaining`
           workList.appendChild(li2)
-        //   console.log(`${this.name} spent ${workPrice} energy working and made $${5 + this.int}`)
-        //   console.log (`You now have $${this.money} and ${this.energy} energy remaining`)
         }
       } 
     }
-    // charMoney.textContent = this.money
-    // charEnergy.textContent = this.energy
   }
   //recover energy by spending money
   eat(){
     let cost = 8/this.rec;
     if(this.money - cost < 0){ //if price of food is greater than current money owned
-      // console.log('Not enough money')
       eatTxt.textContent = 'Not enough money'
+      eatTxt.style.color = 'white'
       return
     }
     if(this.energy >= 100){
-      // console.log(`${this.name} energy is full`)
       eatTxt.textContent = `${this.name} energy is full`
+      eatTxt.style.color = 'red'
       return
     }
     for(let i=0; i<100; i++){
@@ -155,11 +163,11 @@ class Character {
           this.money -- 
           this.energy = 100
           eatTxt.textContent = `${this.name} energy is full`
-          // console.log('adding remaining energy')
+          eatTxt.style.color = 'red'
           break
         } else if(this.energy + 8 > 100){
           eatTxt.textContent = `${this.name} energy is full`
-          // console.log('Energy is full')
+          eatTxt.style.color = 'white'
           break
         } else {
           this.money -= cost;
@@ -170,53 +178,55 @@ class Character {
           const li2 = document.createElement('li')
           li2.textContent = `${this.name} has $${Math.round(this.money)} remaining`
           eatList.appendChild(li2)
-          // console.log(`${this.name} energy is now ${this.energy}`)
-          // console.log(`${this.name} has $${Math.round(this.money)} remaining`)
         }
       }
     }
     this.money = Math.round(this.money);
     this.energy = Math.floor(this.energy);
-    // console.log(`You have $${this.money}`)
-    // console.log(`You have ${this.energy} energy`)
   }
   atckPotion(){
     if(this.money < 125){
-      console.log(`${this.name} doesn't have enough money to buy this`)
+      atkPtnTxt.textContent = `${this.name} doesn't have enough money to buy this`
     } else {
       if(this.race === 'Human' && this.attack >= 17){
-        console.log('Attack limit reached')
+        atkPtnTxt.textContent = 'Attack limit reached'
+        atkPtnTxt.style.color = 'red'
         return;
       } else if(this.race === 'Elf' && this.attack >= 15){
-        console.log('Attack limit reached')
+        atkPtnTxt.textContent = 'Attack limit reached'
+        atkPtnTxt.style.color = 'red'
         return;
       } else if(this.race === 'Dwarf' && this.attack >= 13){
-        console.log('Attack limit reached')
+        atkPtnTxt.textContent = 'Attack limit reached'
+        atkPtnTxt.style.color = 'red'
         return;
       } else {
         this.money -= 125
         this.attack ++
-        console.log(`${this.name} attack power increased by 1`)
+        atkPtnTxt.textContent = `${this.name} attack power increased by 1`
       }
     }
   }
   defPotion(){
     if(this.money < 125){
-      console.log(`${this.name} doesn't have enough money to buy this`)
+      defPtnTxt.textContent = `${this.name} doesn't have enough money to buy this`
     } else {
       if(this.race === 'Human' && this.defense >= 13){
-        console.log('Defense limit reached')
+        defPtnTxt.textContent = 'Defense limit reached'
+        defPtnTxt.style.color = 'red'
         return;
       } else if(this.race === 'Elf' && this.defense >= 15){
-        console.log('Defense limit reached')
+        defPtnTxt.textContent = 'Defense limit reached'
+        defPtnTxt.style.color = 'red'
         return;
       } else if(this.race === 'Dwarf' && this.defense >= 17){
-        console.log('Defense limit reached')
+        defPtnTxt.textContent = 'Defense limit reached'
+        defPtnTxt.style.color = 'red'
         return;
       } else {
         this.money -= 125
         this.defense ++
-        console.log(`${this.name} defense strength increased by 1`)
+        defPtnTxt.textContent = `${this.name} defense strength increased by 1`
       }
     }
   }
@@ -240,8 +250,8 @@ class MiniBoss extends Character {
   constructor(name){
     super(name)
     this.name = 'Mini Boss'
-    this.attack = 12
-    this.defense = 12
+    this.attack = 13
+    this.defense = 13
     this.race = this.race[Math.floor(Math.random() * this.race.length)]
     this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
   }
@@ -287,7 +297,6 @@ class HumanEnemy extends Human {
   constructor(name, attack, defense,){
     super(name, attack, defense)
     this.name = `${this.clss[Math.floor(Math.random() * this.clss.length)]} human enemy`
-    this.hp = 70
     this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
   }
 }
@@ -295,7 +304,6 @@ class ElfEnemy extends Elf {
   constructor(attack, defense){
     super(attack, defense)
     this.name = `${this.clss[Math.floor(Math.random() * this.clss.length)]} elf enemy`
-    this.hp = 70
     this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
   }
 }
@@ -303,7 +311,6 @@ class DwarfEnemy extends Dwarf {
   constructor(attack, defense){
     super(attack, defense)
     this.name = `${this.clss[Math.floor(Math.random() * this.clss.length)]} dwarf enemy`
-    this.hp = 70
     this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
   }
 }
@@ -390,14 +397,16 @@ const humanEnemy3 = new HumanEnemy()
 const elfEnemy3 = new ElfEnemy()
 const dwarEnemy3 = new DwarfEnemy()
 
+
 let enemyArr = [finalBoss, miniBoss, humanEnemy1, elfEnemy1, dwarEnemy1, humanEnemy2, elfEnemy2, dwarEnemy2, humanEnemy3, elfEnemy3, dwarEnemy3]
-
-
 fightBtn.textContent = `Fight(${enemyArr.length})`
+const showStats = () => {
+  charStats.innerHTML = `Attack: ${player.attack} <br> Defense: ${player.defense} <br> Intellect: ${player.int} <br> Stamina: ${player.sta} <br> Recovery: ${player.rec}`
+}
+
 
 ///////////////// buttons ////////////////////
 startBtn.addEventListener('click', (evt) => {
-  console.log('it works')
   startBtn.style.color = 'white';
   storyPg.style.display = 'flex';
   tittlePg.style.display = 'none';
@@ -522,38 +531,73 @@ createBtn.addEventListener('click', (evt) => {
     charClass.textContent = player.clss
     charEnergy.textContent = player.energy
     charMoney.textContent = player.money
-    
+    // mainPg.style.display = 'flex'
+    // createPg.style.display = 'none'
+    fightBtn.textContent = `Fight(${enemyArr.length})`
   }
 })
 
 
 ///////////// main page buttons /////////////////
-charInfo.addEventListener('mouseover', (evt) => {
-  charStats.innerHTML = `Attack: ${player.attack} <br> Defense: ${player.defense} <br> Intellect: ${player.int} <br> Stamina: ${player.sta} <br> Recovery: ${player.rec}`
-
-})
+charInfo.addEventListener('mouseover', (showStats))
 charInfo.addEventListener('mouseout', (evt) => {
   charStats.textContent = ''
 })
 storeBtn.addEventListener('click', (evt) => {
+  charInfo.removeEventListener('mouseover', (showStats))
   fightBtn.disabled = true
   eatBtn.disabled = true
   workBtn.disabled = true
-  fightBtn.style.color = 'white'
   storeBtn.style.color = 'red'
-  eatBtn.style.color = 'white'
-  workBtn.style.color = 'white'
   storePg.classList.add('pop-up')
 })
+atkBuyBtn.addEventListener('click', (evt) => {
+  if(player.energy < 100){
+    atkPtnTxt.textContent = `It's not wise to drink on an empty stomach. Replinish your energy first`
+  } else {
+    player.atckPotion()
+    charMoney.textContent = player.money
+  }
+})
+defBuyBtn.addEventListener('click', (evt) => {
+  if(player.energy < 100){
+    defPtnTxt.textContent = `It's not wise to drink on an empty stomach. Replinish your energy first`
+  } else { 
+    player.defPotion()
+    charMoney.textContent = player.money
+  }
+})
 storeClose.addEventListener('click', (evt) => {
+  charInfo.addEventListener('mouseover', (showStats))
   fightBtn.disabled = false
   eatBtn.disabled = false
   workBtn.disabled = false
+  atkPtnTxt.textContent = ''
+  defPtnTxt.textContent = ''
   storePg.classList.remove('pop-up')
   storeBtn.style.color = 'white'
 })
 
 fightBtn.addEventListener('click', (evt) => {
+  if(enemyArr.length === 0){
+    enemyArr = [finalBoss, miniBoss, humanEnemy1, elfEnemy1, dwarEnemy1, humanEnemy2, elfEnemy2, dwarEnemy2, humanEnemy3, elfEnemy3, dwarEnemy3]
+    player.money = 0
+    charMoney.textContent = player.money
+    player.energy = 100
+    charEnergy.textContent = player.energy
+    fightBtn.textContent = `Fight(${enemyArr.length})`
+    if(player.race === 'Human'){
+      player.attack = 12
+      player.defense = 8
+    } else if(player.race === 'Elf'){
+      player.attack = 10
+      player.defense = 10
+    } else if(player.race === 'Dwarf'){
+      player.attack = 8
+      player.defense = 12
+    }
+  }
+  charInfo.removeEventListener('mouseover', (showStats))
   storeBtn.disabled = true
   eatBtn.disabled = true
   workBtn.disabled = true
@@ -565,11 +609,43 @@ fightBtn.addEventListener('click', (evt) => {
 })
 atckBtn.addEventListener('click', (evt) => {
   player.attackMode(enemyArr[enemyArr.length - 1])
+  if(player.hp <= 0 && enemyArr[enemyArr.length - 1].hp > 0){
+    retreatBtn.disabled = true
+  } else if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp <= 0){
+    retreatBtn.disabled = true
+  }else {
+    retreatBtn.disabled = false
+  }
+})
+retreatBtn.addEventListener('click', (evt) => {
+  if(player.money > 10){
+    const li1 = document.createElement('li')
+    li1.textContent = `${player.name} fled the fight scene in shame.`
+    firstTxt.appendChild(li1)
+    const li2 = document.createElement('li')
+    li2.textContent = `In your rush to leave the scene you dropped some of your money`
+    firstTxt.appendChild(li2)
+    secTxt.textContent = `${player.name} lost $10`
+    secTxt.style.color = 'red'
+    player.money -= 10
+  }else {
+    const li1 = document.createElement('li')
+    li1.textContent = `${player.name} fled the fight scene in shame.`
+    firstTxt.appendChild(li1)
+    const li2 = document.createElement('li')
+    li2.textContent = `${this.name} fled so quickly that some of your energy is gone`
+    firstTxt.appendChild(li2)
+    secTxt.textContent = `${player.name} lost 15 energy`
+    secTxt.style.color = 'red'
+    player.energy -= 15
+  }
+  player.hp = 0
+  atckBtn.disabled = true
 })
 
 fightClose.addEventListener('click', (evt) => {
   if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp > 0){
-    alert(' you must defeat the enemy or retreat bofre closing the window')
+    alert(' you must defeat the enemy or retreat before closing the window')
   }
   if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp <= 0){
     fightPg.classList.remove('pop-up')
@@ -581,17 +657,32 @@ fightClose.addEventListener('click', (evt) => {
     fightPg.classList.remove('pop-up')
     fightBtn.style.color = 'white'
     player.hp = 100;
-    enemyArr[enemyArr.length - 1].hp = 100;
+    if(enemyArr.length === 1){//final boss
+      enemyArr[0].hp = 150
+    } else {
+      enemyArr[enemyArr.length - 1].hp = 100;
+    }
   }
-  fightBtn.textContent = `Fight(${enemyArr.length})`
+  if(enemyArr.length === 0){
+    fightBtn.textContent = `Replay`
+  } else {
+    fightBtn.textContent = `Fight(${enemyArr.length})`
+  }
   firstTxt.textContent = ''
   secTxt.textContent = ''
+  secTxt.style.color = 'black'
+  charInfo.addEventListener('mouseover', (showStats))
   storeBtn.disabled = false
   eatBtn.disabled = false
   workBtn.disabled = false
+  atckBtn.disabled = false
+  retreatBtn.disabled = false
+  charMoney.textContent = player.money
+  charEnergy.textContent = player.energy
 })
 
 eatBtn.addEventListener('click', (evt) => {
+  charInfo.removeEventListener('mouseover', (showStats))
   fightBtn.disabled = true
   storeBtn.disabled = true
   workBtn.disabled = true
@@ -609,12 +700,14 @@ eatClose.addEventListener('click', (evt) => {
   charEnergy.textContent = player.energy
   eatList.textContent = ''
   eatTxt.textContent = ''
+  charInfo.addEventListener('mouseover', (showStats))
   fightBtn.disabled = false
   storeBtn.disabled = false
   workBtn.disabled = false
 })
 
 workBtn.addEventListener('click', (evt) => {
+  charInfo.removeEventListener('mouseover', (showStats))
   fightBtn.disabled = true
   storeBtn.disabled = true
   eatBtn.disabled = true
@@ -632,6 +725,7 @@ workClose.addEventListener('click', (evt) => {
   charEnergy.textContent = player.energy
   workList.textContent = ''
   workTxt.textContent = ''
+  charInfo.addEventListener('mouseover', (showStats))
   fightBtn.disabled = false
   storeBtn.disabled = false
   eatBtn.disabled = false
