@@ -9,6 +9,8 @@ const storyPg = document.querySelector('#story')
 //Character Creation DOM
 const createPg = document.querySelector('#create')
 const createImg = document.querySelector('#char-image')
+const maleBtn = document.querySelector('.char-gender > button:nth-of-type(1)')
+const femaleBtn = document.querySelector('.char-gender > button:nth-of-type(2)')
 const humanBtn = document.querySelector('.char-race > button:nth-of-type(1)')
 const elfBtn = document.querySelector('.char-race > button:nth-of-type(2)')
 const dwarfBtn = document.querySelector('.char-race > button:nth-of-type(3)')
@@ -43,10 +45,12 @@ const defPtnTxt = document.querySelector('#def-potion > div > p:nth-of-type(2)')
 //Fight pop up
 const fightPg = document.querySelector('.fight')
 const fightClose = document.querySelector('.fight > button')
-const atckBtn = document.querySelector('.fight > div > button:nth-of-type(1)')
-const retreatBtn = document.querySelector('.fight > div > button:nth-of-type(2)')
+const atckBtn = document.querySelector('.fight > div:nth-of-type(2) > button:nth-of-type(1)')
+const retreatBtn = document.querySelector('.fight > div:nth-of-type(2) > button:nth-of-type(2)')
 const firstTxt = document.querySelector('#first-text')
 const secTxt = document.querySelector('#second-text')
+const arrowAtk = document.querySelector('.arrow')
+const arrowHit = document.querySelector('.arrow-enemy')
 
 //Eat pop up
 const eatPg = document.querySelector('.eat')
@@ -66,6 +70,7 @@ class Character {
     this.name = '';
     this.race = ['Human', 'Elf', 'Dwarf']
     this.clss = ['range', 'melee', 'magic']
+    this.gender = "Male"
     this.money = 0
     this.hp = 100
     this.energy = 100
@@ -75,38 +80,36 @@ class Character {
     let playerAtck = Math.round(10 + (this.attack - other.defense));
     let enemyAtck = Math.round(6 + (other.attack - this.defense));
     console.log(this.hp)
-    for(let i = 0; i < 100; i++){
-      if(this.hp > 0 && other.hp <= 0){
-        secTxt.textContent = `${other.name} was defeated! ${this.name} won`
-        break
-      } else if(other.hp > 0 && this.hp <= 0){
-        secTxt.textContent = `${this.name} was killed in battle. You lose`
-        break
+    if(this.hp > 0 && other.hp > 0){
+      if(playerAtck < 1){//wouldn't reduce enemy hp, if negative it would add
+        playerAtck = 1
       }
-      if(this.hp > 0 && other.hp > 0){
-        if(playerAtck < 1){//wouldn't reduce enemy hp, if negative it would add
-          playerAtck = 1
-        }
-        if(playerAtck > other.hp){//hp would equal a negative number
-          other.hp = 0
-        } else {
-          other.hp -= playerAtck
-        }
-        const plLi1 = document.createElement('li')
-        plLi1.textContent = `${this.name} attacked ${other.name} and dealt ${playerAtck} damage`
-        firstTxt.appendChild(plLi1)
-        const plLi2 = document.createElement('li')
-        plLi2.textContent = `${other.name} hp is now ${other.hp}`
-        firstTxt.appendChild(plLi2)
-      } 
+      if(playerAtck > other.hp){//hp would equal a negative number
+        other.hp = 0
+        arrowAtk.classList.add('arrow-attack')
+      } else {
+        other.hp -= playerAtck
+        arrowAtk.classList.add('arrow-attack')
+      }
+      const plLi1 = document.createElement('li')
+      plLi1.textContent = `${this.name} attacked ${other.name} and dealt ${playerAtck} damage`
+      firstTxt.appendChild(plLi1)
+      const plLi2 = document.createElement('li')
+      plLi2.textContent = `${other.name} hp is now ${other.hp}`
+      firstTxt.appendChild(plLi2)
+    } 
+    setTimeout(() => {
+      arrowAtk.classList.remove('arrow-attack')
       if(this.hp > 0 && other.hp > 0){
         if(enemyAtck < 1){
           enemyAtck = 1
         }
         if(enemyAtck > this.hp){
           this.hp = 0
+          arrowHit.classList.add('arrow-dmg')
         } else {
           this.hp -= enemyAtck
+          arrowHit.classList.add('arrow-dmg')
         }
         const enLi1 = document.createElement('li')
         enLi1.textContent = `${other.name} attacked ${this.name} and dealt ${enemyAtck} damage`
@@ -115,7 +118,8 @@ class Character {
         enLi2.textContent = `${this.name} hp is now ${this.hp}`
         firstTxt.appendChild(enLi2)
       }
-    }
+    }, 1500)
+    arrowHit.classList.remove('arrow-dmg')
   }
   //earn money by using energy
   work(){
@@ -399,10 +403,10 @@ const dwarEnemy3 = new DwarfEnemy()
 
 
 let enemyArr = [finalBoss, miniBoss, humanEnemy1, elfEnemy1, dwarEnemy1, humanEnemy2, elfEnemy2, dwarEnemy2, humanEnemy3, elfEnemy3, dwarEnemy3]
-fightBtn.textContent = `Fight(${enemyArr.length})`
 const showStats = () => {
   charStats.innerHTML = `Attack: ${player.attack} <br> Defense: ${player.defense} <br> Intellect: ${player.int} <br> Stamina: ${player.sta} <br> Recovery: ${player.rec}`
 }
+let playerGender = 'Male'
 
 
 ///////////////// buttons ////////////////////
@@ -412,8 +416,35 @@ startBtn.addEventListener('click', (evt) => {
   tittlePg.style.display = 'none';
 })
 
+///////////// Story button //////////////////
+storyPg.addEventListener('click', (evt) => {
+  createPg.style.display = 'flex'
+  storyPg.style.display = 'none'
+})
 
 ///////// create page buttons ///////////////
+maleBtn.addEventListener('click', (evt) => {
+  if(player === null){
+    playerGender = 'Male'
+  } else {
+    playerGender = 'Male'
+    player.gender = 'Male'
+  }
+  maleBtn.style.color = 'red'
+  femaleBtn.style.color = 'white'
+})
+
+femaleBtn.addEventListener('click', (evt) => {
+  if(player === null){
+    playerGender = 'Female'
+  } else {
+    playerGender = 'Female'
+    player.gender = 'Female'
+  }
+  femaleBtn.style.color = 'red'
+  maleBtn.style.color = 'white'
+})
+
 humanBtn.addEventListener('click', (evt) => {
   humanBtn.style.color = 'red'
   elfBtn.style.color = 'white'
@@ -448,7 +479,7 @@ dwarfBtn.addEventListener('click', (evt) => {
 })
 meleeBtn.addEventListener('click', (evt) => {
   if(player === null){
-    alert('choose a class first');
+    alert('choose a race first');
   } 
   if(player.race === 'Human'){
     meleeBtn.style.color = 'red';
@@ -471,7 +502,7 @@ meleeBtn.addEventListener('click', (evt) => {
 })
 rangeBtn.addEventListener('click', (evt) => {
   if(player === null){
-    alert('choose a class first');
+    alert('choose a race first');
   } 
   if(player.race === 'Human'){
     meleeBtn.style.color = 'white';
@@ -494,7 +525,7 @@ rangeBtn.addEventListener('click', (evt) => {
 })
 magicBtn.addEventListener('click', (evt) => {
   if(player === null){
-    alert('choose a class first');
+    alert('choose a race first');
   } 
   if(player.race === 'Human'){
     meleeBtn.style.color = 'white';
@@ -534,6 +565,7 @@ createBtn.addEventListener('click', (evt) => {
     // mainPg.style.display = 'flex'
     // createPg.style.display = 'none'
     fightBtn.textContent = `Fight(${enemyArr.length})`
+    console.log(player)
   }
 })
 
@@ -579,6 +611,7 @@ storeClose.addEventListener('click', (evt) => {
 })
 
 fightBtn.addEventListener('click', (evt) => {
+  player = new ElfRange;
   if(enemyArr.length === 0){
     enemyArr = [finalBoss, miniBoss, humanEnemy1, elfEnemy1, dwarEnemy1, humanEnemy2, elfEnemy2, dwarEnemy2, humanEnemy3, elfEnemy3, dwarEnemy3]
     player.money = 0
@@ -611,10 +644,15 @@ atckBtn.addEventListener('click', (evt) => {
   player.attackMode(enemyArr[enemyArr.length - 1])
   if(player.hp <= 0 && enemyArr[enemyArr.length - 1].hp > 0){
     retreatBtn.disabled = true
+    atckBtn.disabled = true
+    secTxt.textContent = `${player.name} was killed in battle. You lose`
   } else if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp <= 0){
     retreatBtn.disabled = true
+    atckBtn.disabled = true
+    secTxt.textContent = `${enemyArr[enemyArr.length - 1].name} was defeated! ${player.name} won`
   }else {
     retreatBtn.disabled = false
+    atckBtn.disabled = false
   }
 })
 retreatBtn.addEventListener('click', (evt) => {
@@ -641,6 +679,7 @@ retreatBtn.addEventListener('click', (evt) => {
   }
   player.hp = 0
   atckBtn.disabled = true
+  retreatBtn.disabled = true
 })
 
 fightClose.addEventListener('click', (evt) => {
@@ -679,6 +718,8 @@ fightClose.addEventListener('click', (evt) => {
   retreatBtn.disabled = false
   charMoney.textContent = player.money
   charEnergy.textContent = player.energy
+  arrowHit.classList.remove('arrow-dmg')
+  arrowAtk.classList.remove('arrow-attack')
 })
 
 eatBtn.addEventListener('click', (evt) => {
