@@ -19,6 +19,9 @@ const rangeBtn = document.querySelector('.char-class > button:nth-of-type(2)')
 const magicBtn = document.querySelector('.char-class > button:nth-of-type(3)')
 const createName = document.querySelector('.create-char > input:nth-of-type(1)')
 const createBtn = document.querySelector('.create-char > input:nth-of-type(2)')
+//Character Image
+const maleElfRng = document.querySelector('.male-elf-range')
+const femaleHumRng = document.querySelector('.female-human-range')
 
 //Main page DOM
 const mainPg = document.querySelector('#main')
@@ -49,8 +52,16 @@ const atckBtn = document.querySelector('.fight > div:nth-of-type(2) > button:nth
 const retreatBtn = document.querySelector('.fight > div:nth-of-type(2) > button:nth-of-type(2)')
 const firstTxt = document.querySelector('#first-text')
 const secTxt = document.querySelector('#second-text')
+//Fight Images
+const elfRngPl = document.querySelector('.elf-range-attack')
+const elfrngEn = document.querySelector('.elf-range-enemy')
 const arrowAtk = document.querySelector('.arrow')
 const arrowHit = document.querySelector('.arrow-enemy')
+const elfMgcPl = document.querySelector('.elf-magic-attack')
+const elfMgcEn = document.querySelector('.elf-magic-enemy')
+const magicSpell = document.querySelector('.spell')
+// const magicAtk = document.querySelector('.player-spell-animation')
+// const magicHit = document.querySelector('.enemy-spell-animation')
 
 //Eat pop up
 const eatPg = document.querySelector('.eat')
@@ -85,11 +96,13 @@ class Character {
         playerAtck = 1
       }
       if(playerAtck > other.hp){//hp would equal a negative number
+        arrowAtk.classList.add('arrow-attack')
+        // magicSpell.classList.add('player-spell-animation')
         other.hp = 0
-        arrowAtk.classList.add('arrow-attack')
       } else {
-        other.hp -= playerAtck
         arrowAtk.classList.add('arrow-attack')
+        // magicSpell.classList.add('player-spell-animation')
+        other.hp -= playerAtck
       }
       const plLi1 = document.createElement('li')
       plLi1.textContent = `${this.name} attacked ${other.name} and dealt ${playerAtck} damage`
@@ -100,16 +113,19 @@ class Character {
     } 
     setTimeout(() => {
       arrowAtk.classList.remove('arrow-attack')
+      // magicSpell.classList.remove('player-spell-animation')
       if(this.hp > 0 && other.hp > 0){
         if(enemyAtck < 1){
           enemyAtck = 1
         }
         if(enemyAtck > this.hp){
+          arrowHit.classList.add('arrow-dmg')
+          // magicSpell.classList.add('enemy-spell-animation')
           this.hp = 0
-          arrowHit.classList.add('arrow-dmg')
         } else {
-          this.hp -= enemyAtck
           arrowHit.classList.add('arrow-dmg')
+          // magicSpell.classList.add('enemy-spell-animation')
+          this.hp -= enemyAtck
         }
         const enLi1 = document.createElement('li')
         enLi1.textContent = `${other.name} attacked ${this.name} and dealt ${enemyAtck} damage`
@@ -120,6 +136,7 @@ class Character {
       }
     }, 1500)
     arrowHit.classList.remove('arrow-dmg')
+    // magicSpell.classList.remove('enemy-spell-animation')
   }
   //earn money by using energy
   work(){
@@ -430,6 +447,8 @@ maleBtn.addEventListener('click', (evt) => {
     playerGender = 'Male'
     player.gender = 'Male'
   }
+  femaleHumRng.classList.remove('display')
+  maleElfRng.classList.add('display')
   maleBtn.style.color = 'red'
   femaleBtn.style.color = 'white'
 })
@@ -441,6 +460,8 @@ femaleBtn.addEventListener('click', (evt) => {
     playerGender = 'Female'
     player.gender = 'Female'
   }
+  maleElfRng.classList.remove('display')
+  femaleHumRng.classList.add('display')
   femaleBtn.style.color = 'red'
   maleBtn.style.color = 'white'
 })
@@ -562,8 +583,8 @@ createBtn.addEventListener('click', (evt) => {
     charClass.textContent = player.clss
     charEnergy.textContent = player.energy
     charMoney.textContent = player.money
-    // mainPg.style.display = 'flex'
-    // createPg.style.display = 'none'
+    mainPg.style.display = 'flex'
+    createPg.style.display = 'none'
     fightBtn.textContent = `Fight(${enemyArr.length})`
     console.log(player)
   }
@@ -580,6 +601,8 @@ storeBtn.addEventListener('click', (evt) => {
   fightBtn.disabled = true
   eatBtn.disabled = true
   workBtn.disabled = true
+  maleElfRng.classList.remove('show')
+  femaleHumRng.classList.remove('show')
   storeBtn.style.color = 'red'
   storePg.classList.add('pop-up')
 })
@@ -608,6 +631,12 @@ storeClose.addEventListener('click', (evt) => {
   defPtnTxt.textContent = ''
   storePg.classList.remove('pop-up')
   storeBtn.style.color = 'white'
+  if(player.gender === 'Male'){
+    maleElfRng.classList.add('show')
+  }
+  if(player.gender === 'Female'){
+    femaleHumRng.classList.add('show')
+  }
 })
 
 fightBtn.addEventListener('click', (evt) => {
@@ -634,11 +663,17 @@ fightBtn.addEventListener('click', (evt) => {
   storeBtn.disabled = true
   eatBtn.disabled = true
   workBtn.disabled = true
+  maleElfRng.classList.remove('show')
+  femaleHumRng.classList.remove('show')
   fightBtn.style.color = 'red'
   storeBtn.style.color = 'white'
   eatBtn.style.color = 'white'
   workBtn.style.color = 'white'
   fightPg.classList.add('pop-up')
+  elfRngPl.classList.add('display')
+  arrowAtk.classList.add('display')
+  elfMgcEn.classList.add('display')
+  arrowHit.classList.add('display')
 })
 atckBtn.addEventListener('click', (evt) => {
   player.attackMode(enemyArr[enemyArr.length - 1])
@@ -720,6 +755,16 @@ fightClose.addEventListener('click', (evt) => {
   charEnergy.textContent = player.energy
   arrowHit.classList.remove('arrow-dmg')
   arrowAtk.classList.remove('arrow-attack')
+  elfMgcEn.classList.remove('display')
+  magicSpell.classList.remove('display')
+  elfrngEn.classList.remove('display')
+  arrowHit.classList.remove('dsiplay')
+  if(player.gender === 'Male'){
+    maleElfRng.classList.add('show')
+  }
+  if(player.gender === 'Female'){
+    femaleHumRng.classList.add('show')
+  }
 })
 
 eatBtn.addEventListener('click', (evt) => {
@@ -727,6 +772,8 @@ eatBtn.addEventListener('click', (evt) => {
   fightBtn.disabled = true
   storeBtn.disabled = true
   workBtn.disabled = true
+  maleElfRng.classList.remove('show')
+  femaleHumRng.classList.remove('show')
   fightBtn.style.color = 'white'
   storeBtn.style.color = 'white'
   eatBtn.style.color = 'red'
@@ -745,6 +792,12 @@ eatClose.addEventListener('click', (evt) => {
   fightBtn.disabled = false
   storeBtn.disabled = false
   workBtn.disabled = false
+  if(player.gender === 'Male'){
+    maleElfRng.classList.add('show')
+  }
+  if(player.gender === 'Female'){
+    femaleHumRng.classList.add('show')
+  }
 })
 
 workBtn.addEventListener('click', (evt) => {
@@ -752,6 +805,8 @@ workBtn.addEventListener('click', (evt) => {
   fightBtn.disabled = true
   storeBtn.disabled = true
   eatBtn.disabled = true
+  maleElfRng.classList.remove('show')
+  femaleHumRng.classList.remove('show')
   fightBtn.style.color = 'white'
   storeBtn.style.color = 'white'
   eatBtn.style.color = 'white'
@@ -770,6 +825,12 @@ workClose.addEventListener('click', (evt) => {
   fightBtn.disabled = false
   storeBtn.disabled = false
   eatBtn.disabled = false
+  if(player.gender === 'Male'){
+    maleElfRng.classList.add('show')
+  }
+  if(player.gender === 'Female'){
+    femaleHumRng.classList.add('show')
+  }
 })
 
 

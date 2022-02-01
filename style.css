@@ -1,11 +1,11 @@
 body > div#first {
     height: 900px;
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: right; /* aligns item top to bottom on column*/
     align-items: center;  /* aligns items left to right  on column*/
-    border: 2px solid red;
     padding: 8px;
     background-color: black;
 }
@@ -25,25 +25,33 @@ button#start {
 }
 body > div#story {
     height: 900px;
-    border: solid orange;
-    display: flex;
+    background-color: black;
+    display: none;
+    /* display: flex; */
     flex-direction: column;
 }
 .story-text {
     flex: 1;
-    background-color: honeydew;
     text-align: left;
-    font-size: large;
+    font-size: 3em;
+    color: white;
+    animation-name: story-paragraph;
+    animation-duration: 15s;
+    /* margin-top: 900px; */
+}
+@keyframes story-paragraph {
+    from {margin-top: 900px;}
+    to {margin-top: 0;}
 }
 .story-animation {
-    flex: 3;
-    background-color: khaki;
+    display: none;
+    /* flex: 1; */
+    background-color: black;
 }
 body > div#create {
     height: 900px;
-    display: flex;
+    display: none;
     flex-direction: row;
-    border: solid purple;
     padding: 2px;
 }
 div.create-char {
@@ -130,13 +138,26 @@ div#char-image {
     background-size: cover;
     background-position: center;
 }
+.male-elf-range {
+    display: none;
+    position: absolute;
+    top: 150px;
+    left: 900px;
+}
+.female-human-range {
+    display: none;
+    position: absolute;
+    height: 700px;
+    left: 610px;
+    bottom: 150px;
+}
 
 body > div#main {
     height: 900px;
     display: flex;
+    /* display: none; */
     flex-direction: column;
     justify-content: space-between;
-    border: solid black;
     background-image: url("https://i.imgur.com/abw3DhZ.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -147,8 +168,6 @@ div.character {
     flex-direction: column;
     width: 250px;
     justify-content:flex-end;
-    border: dotted darkblue;
-    background-color: chocolate;
 }
 div.buttons {
     display: flex;;
@@ -266,18 +285,20 @@ div.fight {
     flex: 1;
 }
 .elf-range-attack {
-    display: inline-block;
+    display: none;
     height: 300px;
     width: 300px;
-    position: relative;
-    top: 135px;
+    position: absolute;
+    top: 375px;
+    left: 115px;
 }
 .arrow {
-    display: inline-block;
+    display: none;
     height: 25px;
     width: 110px;
-    position: relative;
-    bottom: 10px;
+    position: absolute;
+    bottom: 395px;
+    left: 425px;
     opacity: 0;
 }
 .arrow-attack {
@@ -285,28 +306,28 @@ div.fight {
     animation-duration: 1s;
 }
 @keyframes arrow-animation {
-    0% {left: 15px;}
+    0% {left: 400px;}
     5%{opacity: 1;}
     90% {opacity: 1;}
-    100% {left: 1200px; opacity: 0;}
+    100% {left: 1580px; opacity: 0;}
 }
 .elf-range-enemy {
-    display: inline-block;
+    display: none;
     height: 300px;
     width: 300px;
-    position: relative;
-    top: 135px;
-    left: 1000px;
+    position: absolute;
+    top: 375px;
+    left: 1600px;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
 .arrow-enemy {
-    display: inline-block;
+    display: none;
     height: 25px;
     width: 110px;
-    position: relative;
-    bottom: 10px;
-    left: 1000px;
+    position: absolute;
+    bottom: 395px;
+    left: 1480px;
     opacity: 0;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
@@ -319,47 +340,53 @@ div.fight {
     0% {left: 1000px;}
     5%{opacity: 1;}
     90% {opacity: 1;}
-    100% {left: -180px; opacity: 0;}
+    100% {left: 300px; opacity: 0;}
 }
 .elf-magic-attack {
     display: none;
     height: 300px;
     width: 300px;
-    position: relative;
-    top: 135px;
+    position: absolute;
+    top: 375px;
+    left: 115px;
 }
 .spell {
     display: none;
     width: 90px;
-    position: relative;
-    bottom: 10px;
+    position: absolute;
+    bottom: 395px;
+    left: 425px;
     opacity: 0;
-    animation-name: spell-animation;
-    animation-duration: 1s;
-    animation-name: enemy-spell-animation;
-    animation-duration: 1s;
 }
 @keyframes spell-animation {
-    0% {left: 15px;}
+    0% {left: 400px;}
     5%{opacity: 1;}
     90% {opacity: 1;}
-    100% {left: 1200px; opacity: 0;}
+    100% {left: 1600px; opacity: 0;}
+}
+.player-spell-animation {
+    animation-name: spell-animation;
+    animation-duration: 1s;
 }
 .elf-magic-enemy {
     display: none;
     height: 300px;
     width: 300px;
-    position: relative;
-    top: 135px;
-    left: 1100px;
+    position: absolute;
+    top: 375px;
+    left: 1600px;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
 @keyframes enemy-spell-animation {
-    0% {left: 1000px;}
-    5%{opacity: 1;}
+    0% {left: 1500px; filter: hue-rotate(110deg);}
+    5% {opacity: 1;}
     90% {opacity: 1;}
-    100% {left: -130px; opacity: 0;}
+    100% {left: 300px; opacity: 0; filter: hue-rotate(110deg);}
+}
+.enemy-spell-animation{
+    animation-name: enemy-spell-animation;
+    animation-duration: 1s;
 }
 .fight > div:nth-of-type(2) {
     display: flex;
@@ -389,7 +416,8 @@ div.fight {
 
 div.eat {
     display: none;
-    flex-grow: .7;
+    height: 600px;
+    width: 900px;
     flex-direction: column;
     justify-content: space-between;
     border: solid black;
@@ -402,8 +430,7 @@ div.eat {
     width: 50px;
 }
 .eat > div:nth-of-type(1) {
-    border: solid purple;
-    flex: 4;
+    flex: 1;
 }
 .eat > div:nth-of-type(2) {
     flex: 1;
@@ -423,7 +450,8 @@ div.eat {
 
 div.work {
     display: none;
-    flex-grow: .7;
+    height: 600px;
+    width: 900px;
     flex-direction: column;
     justify-content: space-between;
     border: solid black;
@@ -436,8 +464,7 @@ div.work {
     width: 50px;
 }
 .work > div:nth-of-type(1) {
-    border: solid purple;
-    flex: 4;
+    flex: 1;
 }
 .work > div:nth-of-type(2) {
     flex: 1;
@@ -484,11 +511,8 @@ div.work {
     font-size: 150%;
     text-transform: capitalize;
 }
-.remove{
-    display: none;
-}
 .display{
-    display: flex;
+    display: inline-block!important;
 }
 .pop-up {
     display: flex!important;
