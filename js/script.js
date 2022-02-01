@@ -672,7 +672,7 @@ fightBtn.addEventListener('click', (evt) => {
   fightPg.classList.add('pop-up')
   elfRngPl.classList.add('display')
   arrowAtk.classList.add('display')
-  elfMgcEn.classList.add('display')
+  elfrngEn.classList.add('display')
   arrowHit.classList.add('display')
 })
 atckBtn.addEventListener('click', (evt) => {
@@ -726,6 +726,29 @@ fightClose.addEventListener('click', (evt) => {
     fightBtn.style.color = 'white'
     player.hp = 100
     enemyArr.pop()
+    firstTxt.textContent = ''
+    secTxt.textContent = ''
+    secTxt.style.color = 'black'
+    charInfo.addEventListener('mouseover', (showStats))
+    storeBtn.disabled = false
+    eatBtn.disabled = false
+    workBtn.disabled = false
+    atckBtn.disabled = false
+    retreatBtn.disabled = false
+    charMoney.textContent = player.money
+    charEnergy.textContent = player.energy
+    arrowHit.classList.remove('arrow-dmg')
+    arrowAtk.classList.remove('arrow-attack')
+    elfMgcEn.classList.remove('display')
+    magicSpell.classList.remove('display')
+    elfrngEn.classList.remove('display')
+    arrowHit.classList.remove('dsiplay')
+    if(player.gender === 'Male'){
+      maleElfRng.classList.add('show')
+    }
+    if(player.gender === 'Female'){
+      femaleHumRng.classList.add('show')
+    }
   }
   if(player.hp <= 0){
     fightPg.classList.remove('pop-up')
@@ -733,37 +756,60 @@ fightClose.addEventListener('click', (evt) => {
     player.hp = 100;
     if(enemyArr.length === 1){//final boss
       enemyArr[0].hp = 150
+      firstTxt.textContent = ''
+      secTxt.textContent = ''
+      secTxt.style.color = 'black'
+      charInfo.addEventListener('mouseover', (showStats))
+      storeBtn.disabled = false
+      eatBtn.disabled = false
+      workBtn.disabled = false
+      atckBtn.disabled = false
+      retreatBtn.disabled = false
+      charMoney.textContent = player.money
+      charEnergy.textContent = player.energy
+      arrowHit.classList.remove('arrow-dmg')
+      arrowAtk.classList.remove('arrow-attack')
+      elfMgcEn.classList.remove('display')
+      magicSpell.classList.remove('display')
+      elfrngEn.classList.remove('display')
+      arrowHit.classList.remove('dsiplay')
+      if(player.gender === 'Male'){
+        maleElfRng.classList.add('show')
+      }
+      if(player.gender === 'Female'){
+        femaleHumRng.classList.add('show')
+      }
     } else {
       enemyArr[enemyArr.length - 1].hp = 100;
+      firstTxt.textContent = ''
+      secTxt.textContent = ''
+      secTxt.style.color = 'black'
+      charInfo.addEventListener('mouseover', (showStats))
+      storeBtn.disabled = false
+      eatBtn.disabled = false
+      workBtn.disabled = false
+      atckBtn.disabled = false
+      retreatBtn.disabled = false
+      charMoney.textContent = player.money
+      charEnergy.textContent = player.energy
+      arrowHit.classList.remove('arrow-dmg')
+      arrowAtk.classList.remove('arrow-attack')
+      elfMgcEn.classList.remove('display')
+      magicSpell.classList.remove('display')
+      elfrngEn.classList.remove('display')
+      arrowHit.classList.remove('dsiplay')
+      if(player.gender === 'Male'){
+        maleElfRng.classList.add('show')
+      }
+      if(player.gender === 'Female'){
+        femaleHumRng.classList.add('show')
+      }
     }
   }
   if(enemyArr.length === 0){
     fightBtn.textContent = `Replay`
   } else {
     fightBtn.textContent = `Fight(${enemyArr.length})`
-  }
-  firstTxt.textContent = ''
-  secTxt.textContent = ''
-  secTxt.style.color = 'black'
-  charInfo.addEventListener('mouseover', (showStats))
-  storeBtn.disabled = false
-  eatBtn.disabled = false
-  workBtn.disabled = false
-  atckBtn.disabled = false
-  retreatBtn.disabled = false
-  charMoney.textContent = player.money
-  charEnergy.textContent = player.energy
-  arrowHit.classList.remove('arrow-dmg')
-  arrowAtk.classList.remove('arrow-attack')
-  elfMgcEn.classList.remove('display')
-  magicSpell.classList.remove('display')
-  elfrngEn.classList.remove('display')
-  arrowHit.classList.remove('dsiplay')
-  if(player.gender === 'Male'){
-    maleElfRng.classList.add('show')
-  }
-  if(player.gender === 'Female'){
-    femaleHumRng.classList.add('show')
   }
 })
 
