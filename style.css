@@ -22,6 +22,9 @@ button#start {
     font-size: 70px;
     background: transparent;
 }
+
+
+/* Story Page */
 body > div#story {
     height: 900px;
     background-color: black;
@@ -42,11 +45,13 @@ body > div#story {
     from {margin-top: 900px;}
     to {margin-top: 0;}
 }
-.story-animation {
-    display: none;
-    /* flex: 1; */
+/* .story-animation {
+    flex: 1;
     background-color: black;
-}
+} */
+
+
+/* Create Page */
 body > div#create {
     height: 900px;
     display: none;
@@ -54,10 +59,8 @@ body > div#create {
     padding: 2px;
 }
 div.create-char {
-    /* flex: 1; */
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     background-color: black;
     line-height: 15px;
 }
@@ -72,7 +75,6 @@ div.create-char {
     text-align: center;
     color: white;
 }
-
 .char-gender {
     display: flex;
     border: solid black;
@@ -137,20 +139,32 @@ div#char-image {
     background-size: cover;
     background-position: center;
 }
+
+
+/* Characters on Create Page */
 .male-elf-range {
     display: none;
     position: absolute;
-    top: 150px;
-    left: 900px;
+    top: 17%;
+    left: 45%;
+}
+.male-elf-magic {
+    display: none;
+    position: absolute;
+    top: 17%;
+    left: 45%;
 }
 .female-human-range {
     display: none;
     position: absolute;
     height: 700px;
-    left: 610px;
-    bottom: 150px;
+    left: 30%;
+    bottom: 15%;
 }
 
+
+
+/* Main Page */
 body > div#main {
     height: 900px;
     display: none;
@@ -164,8 +178,10 @@ body > div#main {
 div.character {
     display: flex;
     flex-direction: column;
-    width: 250px;
-    justify-content:flex-end;
+    width: fit-content;
+    justify-content: flex-end;
+    font-size: 1.5em;
+    background-color: rgb(0 218 253 / 35%);
 }
 div.buttons {
     display: flex;;
@@ -173,6 +189,30 @@ div.buttons {
     background-color: black;
     padding: 3px 0px;
 }
+
+/* Characters on Main Page */
+.male-elf-range2 {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
+.male-elf-magic2 {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
+.female-human-range2 {
+    display: none;
+    position: absolute;
+    height: 700px;
+    left: 20%;
+    bottom: 12%;
+}
+
+
+/* Store Pop Up */
 div.store {
     display: none;
     height: 600px;
@@ -264,6 +304,9 @@ div.store {
 #def-potion > div > button:hover {
     color: red;
 }
+
+
+/* Fight Pop Up */
 div.fight {
     display: none;
     flex-direction: column;
@@ -282,110 +325,6 @@ div.fight {
     border: solid;
     flex: 1;
 }
-.elf-range-attack {
-    display: none;
-    height: 300px;
-    width: 300px;
-    position: absolute;
-    top: 375px;
-    left: 115px;
-}
-.arrow {
-    display: none;
-    height: 25px;
-    width: 110px;
-    position: absolute;
-    bottom: 395px;
-    left: 425px;
-    opacity: 0;
-}
-.arrow-attack {
-    animation-name: arrow-animation;
-    animation-duration: 1s;
-}
-@keyframes arrow-animation {
-    0% {left: 400px;}
-    5%{opacity: 1;}
-    90% {opacity: 1;}
-    100% {left: 1580px; opacity: 0;}
-}
-.elf-range-enemy {
-    display: none;
-    height: 300px;
-    width: 300px;
-    position: absolute;
-    top: 375px;
-    left: 1600px;
-    transform: rotateY(180deg);
-    filter: hue-rotate(110deg);
-}
-.arrow-enemy {
-    display: none;
-    height: 25px;
-    width: 110px;
-    position: absolute;
-    bottom: 395px;
-    left: 1480px;
-    opacity: 0;
-    transform: rotateY(180deg);
-    filter: hue-rotate(110deg);
-}
-.arrow-dmg {
-    animation-name: enemy-arrow-animation;
-    animation-duration: 1s;
-}
-@keyframes enemy-arrow-animation {
-    0% {left: 1500px;}
-    5%{opacity: 1;}
-    90% {opacity: 1;}
-    100% {left: 300px; opacity: 0;}
-}
-.elf-magic-attack {
-    display: none;
-    height: 300px;
-    width: 300px;
-    position: absolute;
-    top: 375px;
-    left: 115px;
-}
-.spell {
-    display: none;
-    width: 90px;
-    position: absolute;
-    bottom: 395px;
-    left: 425px;
-    opacity: 0;
-}
-@keyframes spell-animation {
-    0% {left: 400px;}
-    5%{opacity: 1;}
-    90% {opacity: 1;}
-    100% {left: 1600px; opacity: 0;}
-}
-.player-spell-animation {
-    animation-name: spell-animation;
-    animation-duration: 1s;
-}
-.elf-magic-enemy {
-    display: none;
-    height: 300px;
-    width: 300px;
-    position: absolute;
-    top: 375px;
-    left: 1600px;
-    transform: rotateY(180deg);
-    filter: hue-rotate(110deg);
-}
-@keyframes enemy-spell-animation {
-    0% {left: 1500px; filter: hue-rotate(110deg);}
-    5% {opacity: 1;}
-    90% {opacity: 1;}
-    100% {left: 300px; opacity: 0; filter: hue-rotate(110deg);}
-}
-.enemy-spell-animation{
-    animation-name: enemy-spell-animation;
-    animation-duration: 1s;
-}
 .fight > div:nth-of-type(2) {
     display: flex;
     justify-content: space-between;
@@ -395,12 +334,15 @@ div.fight {
 }
 .fight > div:nth-of-type(2) > .fight-text {
     overflow: auto;
+    width: 100%;
+    text-align: center;
 }
 #first-text {
     list-style-type: none;
+    font-size: 2.5em;
 }
 #second-text {
-    font-size: 1.5em;
+    font-size: 2.5em;
 }
 .fight > div:nth-of-type(2) > button {
     color: white;
@@ -411,7 +353,137 @@ div.fight {
 .fight > div:nth-of-type(2) > button:hover {
     color:red;
 }
+/* Characters on Fight Pop Up */
+.male-elf-range3 {
+    display: none;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 41%;
+    left: 9%;
+}
+.arrow {
+    display: none;
+    height: 25px;
+    width: 110px;
+    position: absolute;
+    bottom: 42%;
+    left: 22%;
+    opacity: 0;
+}
 
+.male-elf-range-enemy {
+    display: none;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 41%;
+    left: 80%;
+    transform: rotateY(180deg);
+    filter: hue-rotate(110deg);
+}
+.arrow-enemy {
+    display: none;
+    height: 25px;
+    width: 110px;
+    position: absolute;
+    bottom: 42%;
+    left: 74%;
+    opacity: 0;
+    transform: rotateY(180deg);
+    filter: hue-rotate(110deg);
+}
+
+.male-elf-magic3 {
+    display: none;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 40%;
+    left: 7%;
+}
+.spell {
+    display: none;
+    width: 90px;
+    position: absolute;
+    bottom: 42%;
+    left: 22%;
+    opacity: 0;
+}
+
+.male-elf-magic-enemy {
+    display: none;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 40%;
+    left: 80%;
+    transform: rotateY(180deg);
+    filter: hue-rotate(110deg);
+}
+.female-human-range3 {
+    display: none;
+    height: 320px;
+    width: 550px;
+    position: absolute;
+    top: 39%;
+    left: 3%;
+}
+.female-human-range-enemy {
+    display: none;
+    height: 320px;
+    width: 550px;
+    position: absolute;
+    top: 39%;
+    left: 72%;
+    transform: rotateY(180deg);
+    filter: hue-rotate(110deg);
+}
+
+/* Fight animations */
+.arrow-attack {
+    animation-name: arrow-animation;
+    animation-duration: 1s;
+}
+.arrow-dmg {
+    animation-name: enemy-arrow-animation;
+    animation-duration: 1s;
+}
+.player-spell-animation {
+    animation-name: spell-animation;
+    animation-duration: 1s;
+}
+.enemy-spell-animation{
+    animation-name: enemy-spell-animation;
+    animation-duration: 1s;
+}
+@keyframes arrow-animation {
+    0% {left: 22%;}
+    5%{opacity: 1;}
+    90% {opacity: 1;}
+    100% {left: 78%; opacity: 0;}
+}
+@keyframes enemy-arrow-animation {
+    0% {left: 74%;}
+    5%{opacity: 1;}
+    90% {opacity: 1;}
+    100% {left: 18%; opacity: 0;}
+}
+@keyframes spell-animation {
+    0% {left: 400px;}
+    5%{opacity: 1;}
+    90% {opacity: 1;}
+    100% {left: 1600px; opacity: 0;}
+}
+@keyframes enemy-spell-animation {
+    0% {left: 1500px; filter: hue-rotate(110deg);}
+    5% {opacity: 1;}
+    90% {opacity: 1;}
+    100% {left: 300px; opacity: 0; filter: hue-rotate(110deg);}
+}
+
+
+/* Eat Pop Up */
 div.eat {
     display: none;
     height: 600px;
@@ -446,6 +518,7 @@ div.eat {
     font-size: 1.5em;
 }
 
+/* Work Pop Up */
 div.work {
     display: none;
     height: 600px;
@@ -509,6 +582,8 @@ div.work {
     font-size: 150%;
     text-transform: capitalize;
 }
+
+/* Modal */
 .display{
     display: inline-block!important;
 }
