@@ -1,3 +1,4 @@
+/* /////////Title Page///////////// */
 body > div#first {
     height: 900px;
     display: flex;
@@ -24,7 +25,7 @@ button#start {
 }
 
 
-/* Story Page */
+/* /////////Story Page///////////// */
 body > div#story {
     height: 900px;
     background-color: black;
@@ -51,7 +52,7 @@ body > div#story {
 } */
 
 
-/* Create Page */
+/* /////////Create Page///////////// */
 body > div#create {
     height: 900px;
     display: none;
@@ -164,7 +165,7 @@ div#char-image {
 
 
 
-/* Main Page */
+/* /////////Main Page///////////// */
 body > div#main {
     height: 900px;
     display: none;
@@ -212,7 +213,7 @@ div.buttons {
 }
 
 
-/* Store Pop Up */
+/* /////////Store Pop up///////////// */
 div.store {
     display: none;
     height: 600px;
@@ -306,7 +307,7 @@ div.store {
 }
 
 
-/* Fight Pop Up */
+/* /////////Fight Pop up///////////// */
 div.fight {
     display: none;
     flex-direction: column;
@@ -353,6 +354,8 @@ div.fight {
 .fight > div:nth-of-type(2) > button:hover {
     color:red;
 }
+
+
 /* Characters on Fight Pop Up */
 .male-elf-range3 {
     display: none;
@@ -483,7 +486,7 @@ div.fight {
 }
 
 
-/* Eat Pop Up */
+/* /////////Eat Pop up///////////// */
 div.eat {
     display: none;
     height: 600px;
@@ -518,7 +521,8 @@ div.eat {
     font-size: 1.5em;
 }
 
-/* Work Pop Up */
+
+/* /////////Work Pop up///////////// */
 div.work {
     display: none;
     height: 600px;
@@ -583,7 +587,8 @@ div.work {
     text-transform: capitalize;
 }
 
-/* Modal */
+
+/* /////////Modal///////////// */
 .display{
     display: inline-block!important;
 }
