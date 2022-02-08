@@ -8,9 +8,9 @@ create page
             
 attack (hp):
 - attack power is 10 + (player attack - enemy defense)
-- Humans > attack
-- Dwarves > defense
-- Elves middle
+- Magic > attack
+- Melee > defense
+- Range middle
 work (energy):
 - grants money but it costs energy
 - recovery = replenish energy faster (less money spent on eating) 
@@ -23,7 +23,7 @@ Eat (Money):
 - grants energy but it costs money
 store:
 - can purchase potions to aid in a fight
-- atck potion = +1 atack (max 5/battle)
-- def potion = +1 defense (max 5/battle)
+- atck potion = +1 atack (max 5)
+- def potion = +1 defense (max 5)
 - You will need at least two potions to defeat the mini boss
 - You will need at least 9 potions (5atk, 4def or vice versa) to defeat final boss

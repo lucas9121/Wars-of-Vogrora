@@ -134,13 +134,8 @@ div.create-char {
 
 div#char-image {
     flex: 1;
-    background-color: grey;
-    background-image: url("https://i.imgur.com/TOY8wCY.jpg" );
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: black;
 }
-
 
 /* Characters on Create Page */
 .male-elf-range {
@@ -171,10 +166,6 @@ body > div#main {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url("https://i.imgur.com/abw3DhZ.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 div.character {
     display: flex;
@@ -316,6 +307,10 @@ div.fight {
     background-color: white;
     height: 600px;
     margin: 0 100px;
+    background-image: url("https://i.imgur.com/N4djzUk.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .fight > button {
     background-color: black;
@@ -323,7 +318,6 @@ div.fight {
     width: 50px;
 }
 .fight > div.fight-animation{
-    border: solid;
     flex: 1;
 }
 .fight > div:nth-of-type(2) {
@@ -365,15 +359,6 @@ div.fight {
     top: 41%;
     left: 9%;
 }
-.arrow {
-    display: none;
-    height: 25px;
-    width: 110px;
-    position: absolute;
-    bottom: 42%;
-    left: 22%;
-    opacity: 0;
-}
 
 .male-elf-range-enemy {
     display: none;
@@ -385,17 +370,6 @@ div.fight {
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
-.arrow-enemy {
-    display: none;
-    height: 25px;
-    width: 110px;
-    position: absolute;
-    bottom: 42%;
-    left: 74%;
-    opacity: 0;
-    transform: rotateY(180deg);
-    filter: hue-rotate(110deg);
-}
 
 .male-elf-magic3 {
     display: none;
@@ -404,14 +378,6 @@ div.fight {
     position: absolute;
     top: 40%;
     left: 7%;
-}
-.spell {
-    display: none;
-    width: 90px;
-    position: absolute;
-    bottom: 42%;
-    left: 22%;
-    opacity: 0;
 }
 
 .male-elf-magic-enemy {
@@ -443,12 +409,31 @@ div.fight {
     filter: hue-rotate(110deg);
 }
 
+ /* Weapons */
+.arrow {
+    /* display: none; */
+    height: 25px;
+    width: 110px;
+    position: absolute;
+    bottom: 42%;
+    left: 22%;
+    opacity: 0;
+}
+.spell {
+    /* display: none; */
+    width: 90px;
+    position: absolute;
+    bottom: 42%;
+    left: 22%;
+    opacity: 0;
+}
+
 /* Fight animations */
-.arrow-attack {
+.pl-arrow-animation{
     animation-name: arrow-animation;
     animation-duration: 1s;
 }
-.arrow-dmg {
+.en-arrow-animation {
     animation-name: enemy-arrow-animation;
     animation-duration: 1s;
 }
@@ -467,22 +452,22 @@ div.fight {
     100% {left: 78%; opacity: 0;}
 }
 @keyframes enemy-arrow-animation {
-    0% {left: 74%;}
+    0% {left: 74%; filter: hue-rotate(110deg); transform: rotateY(180deg);}
     5%{opacity: 1;}
     90% {opacity: 1;}
-    100% {left: 18%; opacity: 0;}
+    100% {left: 18%; opacity: 0; filter: hue-rotate(110deg); transform: rotateY(180deg);}
 }
 @keyframes spell-animation {
-    0% {left: 400px;}
+    0% {left: 22%;}
     5%{opacity: 1;}
     90% {opacity: 1;}
-    100% {left: 1600px; opacity: 0;}
+    100% {left: 82%; opacity: 0;}
 }
 @keyframes enemy-spell-animation {
-    0% {left: 1500px; filter: hue-rotate(110deg);}
+    0% {left: 74%; filter: hue-rotate(110deg);}
     5% {opacity: 1;}
     90% {opacity: 1;}
-    100% {left: 300px; opacity: 0; filter: hue-rotate(110deg);}
+    100% {left: 16%; opacity: 0; filter: hue-rotate(110deg);}
 }
 
 
@@ -586,6 +571,30 @@ div.work {
     font-size: 150%;
     text-transform: capitalize;
 }
+
+/* Background images */
+
+.human-background {
+    background-image: url("https://i.imgur.com/KQPZFI0.png" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.elf-background {
+    background-image: url("https://i.imgur.com/hpmfpZd.png" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.dwarf-background {
+    background-image: url("https://i.imgur.com/GV9ndDe.jpg" );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 
 
 /* /////////Modal///////////// */

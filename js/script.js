@@ -61,12 +61,9 @@ const secTxt = document.querySelector('#second-text')
 const maleElfRng3 = document.querySelector('.male-elf-range3')
 const maleElfRngEn = document.querySelector('.male-elf-range-enemy')
 const arrowAtk = document.querySelector('.arrow')
-const arrowHit = document.querySelector('.arrow-enemy')
 const maleElfMgc3 = document.querySelector('.male-elf-magic3')
 const maleElfMgcEn = document.querySelector('.male-elf-magic-enemy')
 const magicSpell = document.querySelector('.spell')
-const magicAtk = document.querySelector('.player-spell-animation')
-const magicHit = document.querySelector('.enemy-spell-animation')
 const femaleHumRng3 = document.querySelector('.female-human-range3')
 const femaleHumRngEn = document.querySelector('.female-human-range-enemy')
 
@@ -98,29 +95,66 @@ class Character {
   attackMode(other) {
     let playerAtck = Math.round(10 + (this.attack - other.defense));
     let enemyAtck = Math.round(6 + (other.attack - this.defense));
+    arrowAtk.classList.remove('en-arrow-animation')
+    magicSpell.classList.remove('enemy-spell-animation')
     if(this.hp > 0 && other.hp > 0){
       if(playerAtck < 1){//wouldn't reduce enemy hp, if negative it would add
         playerAtck = 1
       }
       if(playerAtck > other.hp){//hp would equal a negative number
         other.hp = 0
+        //player attack animation
         if(this.clss === 'range'){
-          arrowAtk.classList.add('arrow-attack')
-          arrowAtk.classList.add('display')
+          arrowAtk.classList.add('pl-arrow-animation')
         } else if(this.clss === 'magic'){
           magicSpell.classList.add('player-spell-animation')
-          magicSpell.classList.add('display')
+        } else if(this.clss === 'melee'){
+          if(this.gender === 'Male'){
+            if(this.race === 'Human'){
+              //add male human melee animation 
+            } else if(this.race === 'Elf'){
+              //add male elf melee animation
+            } else if(this.race === 'Dwarf'){
+              //add male dwarf melee animation
+            }
+          } else if(this.gender === 'Female'){
+            if(this.race === 'Human'){
+              //add female human melee animation 
+            } else if(this.race === 'Elf'){
+              //add female elf melee animation
+            } else if(this.race === 'Dwarf'){
+              //add female dwarf melee animation
+            }
+          }
         }
       } else {
         other.hp -= playerAtck
+        //player attack animation
         if(this.clss === 'range'){
-          arrowAtk.classList.add('arrow-attack')
-          arrowAtk.classList.add('display')
+          arrowAtk.classList.add('pl-arrow-animation')
         } else if(this.clss === 'magic'){
           magicSpell.classList.add('player-spell-animation')
-          magicSpell.classList.add('display')
+        } else if(this.clss === 'melee'){
+          if(this.gender === 'Male'){
+            if(this.race === 'Human'){
+              //add male human melee animation 
+            } else if(this.race === 'Elf'){
+              //add male elf melee animation
+            } else if(this.race === 'Dwarf'){
+              //add male dwarf melee animation
+            }
+          } else if(this.gender === 'Female'){
+            if(this.race === 'Human'){
+              //add female human melee animation 
+            } else if(this.race === 'Elf'){
+              //add female elf melee animation
+            } else if(this.race === 'Dwarf'){
+              //add female dwarf melee animation
+            }
+          }
         }
       }
+      //player attack notification
       const plLi1 = document.createElement('li')
       plLi1.textContent = `${other.name} hp is now ${other.hp}`
       firstTxt.prepend(plLi1)
@@ -131,7 +165,7 @@ class Character {
     } 
     //timeout needed for both animations
     setTimeout(() => {
-      arrowAtk.classList.remove('arrow-attack')
+      arrowAtk.classList.remove('pl-arrow-animation')
       magicSpell.classList.remove('player-spell-animation')
       if(this.hp > 0 && other.hp > 0){
         if(enemyAtck < 1){
@@ -139,17 +173,62 @@ class Character {
         }
         if(enemyAtck > this.hp){
           this.hp = 0
-          arrowHit.classList.add('arrow-dmg')
-          arrowHit.classList.add('display')
-          magicSpell.classList.add('enemy-spell-animation')
-          magicSpell.classList.add('display')
+          //enemy attack animation
+          if(other.clss === 'range'){
+            arrowAtk.classList.add('en-arrow-animation')
+          } 
+          if(other.clss === 'magic'){
+            magicSpell.classList.add('enemy-spell-animation')
+          } 
+          if(other.clss === 'melee'){
+            if(other.gender === 'Male'){
+              if(other.race === 'Human'){
+                //add enemy male human melee animation 
+              } else if(other.race === 'Elf'){
+                //add enemy male elf melee animation
+              } else if(other.race === 'Dwarf'){
+                //add enemy male dwarf melee animation
+              }
+            } else if(other.gender === 'Female'){
+              if(other.race === 'Human'){
+                //add enemy female human melee animation 
+              } else if(other.race === 'Elf'){
+                //add enemy female elf melee animation
+              } else if(other.race === 'Dwarf'){
+                //add enemy female dwarf melee animation
+              }
+            }
+          }
         } else {
           this.hp -= enemyAtck
-          arrowHit.classList.add('arrow-dmg')
-          arrowHit.classList.add('display')
-          magicSpell.classList.add('enemy-spell-animation')
-          magicSpell.classList.add('display')
+          //enemy attack animation 
+          if(other.clss === 'range'){
+            arrowAtk.classList.add('en-arrow-animation')
+          } 
+          if(other.clss === 'magic'){
+            magicSpell.classList.add('enemy-spell-animation')
+          } 
+          if(other.clss === 'melee'){
+            if(other.gender === 'Male'){
+              if(other.race === 'Human'){
+                //add enemy male human melee animation 
+              } else if(other.race === 'Elf'){
+                //add enemy male elf melee animation
+              } else if(other.race === 'Dwarf'){
+                //add enemy male dwarf melee animation
+              }
+            } else if(other.gender === 'Female'){
+              if(other.race === 'Human'){
+                //add enemy female human melee animation 
+              } else if(other.race === 'Elf'){
+                //add enemy female elf melee animation
+              } else if(other.race === 'Dwarf'){
+                //add enemy female dwarf melee animation
+              }
+            }
+          }
         }
+        //enemy attack notification 
         const enLi1 = document.createElement('li')
         enLi1.textContent = `${this.name} hp is now ${this.hp}`
         firstTxt.prepend(enLi1)
@@ -158,20 +237,25 @@ class Character {
         enLi2.textContent = `${other.name} attacked ${this.name} and dealt ${enemyAtck} damage` 
         firstTxt.prepend(enLi2)
       }
-    }, 1500)
-    arrowHit.classList.remove('arrow-dmg')
-    magicSpell.classList.remove('enemy-spell-animation')
+    }, 1050)
 
+    //end of fight if player wins
     setTimeout(() => {
       if(this.hp > 0 && other.hp <= 0){
         secTxt.textContent = `${other.name} was defeated! ${this.name} won`
         secTxt.style.color = 'green'
       }
+    }, 1010)
+    //end of fight if player loses
+    setTimeout(() => {
+      //last code to run needs to remove the last animation
+      arrowAtk.classList.remove('en-arrow-animation')
+      magicSpell.classList.remove('enemy-spell-animation')
       if(this.hp <= 0 && other.hp > 0){
           secTxt.textContent = `${this.name} was killed in battle. You lose`
           secTxt.style.color = 'red'
         } 
-    }, 1000)
+    }, 2000)
   }
   //earn money by using energy
   work(){
@@ -298,7 +382,7 @@ class Character {
 }
 
 
-//Enemy bosses
+//Enemies 
 class FinalBoss extends Character {
   constructor(name){
     super(name)
@@ -311,13 +395,60 @@ class FinalBoss extends Character {
   }
 }
 
-class MiniBoss extends Character {
-  constructor(name){
-    super(name)
+class MiniBoss1 extends Character {
+  constructor(name,gender){
+    super(name,gender)
     this.name = 'Mini Boss'
+    this.gender = 'Female'
     this.attack = 13
     this.defense = 13
-    this.race = this.race[Math.floor(Math.random() * this.race.length)]
+    this.race = this.race[0]
+    this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
+  }
+}
+class MiniBoss2 extends Character {
+  constructor(name,gender){
+    super(name,gender)
+    this.name = 'Mini Boss'
+    this.gender = 'Female'
+    this.attack = 13
+    this.defense = 13
+    this.race = this.race[1]
+    this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
+  }
+}
+class MiniBoss3 extends Character {
+  constructor(name,gender){
+    super(name,gender)
+    this.name = 'Mini Boss'
+    this.gender = 'Female'
+    this.attack = 13
+    this.defense = 13
+    this.race = this.race[2]
+    this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
+  }
+}
+class HumanEnemy extends Character{
+  constructor(name){
+    super(name)
+    this.race = this.race[0]
+    this.name = `${this.race} minor enemy`
+    this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
+  }
+}
+class ElfEnemy extends Character{
+  constructor(name){
+    super(name)
+    this.race = this.race[1]
+    this.name = `${this.race} minor enemy`
+    this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
+  }
+}
+class DwarfEnemy extends Character{
+  constructor(name){
+    super(name)
+    this.race = this.race[2]
+    this.name = `${this.race} minor enemy`
     this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
   }
 }
@@ -331,8 +462,6 @@ class Human extends Character {
     this.int = 6 //intelect gives more money
     this.sta = 2 //stamina uses less energy when working
     this.rec= 2 //recovers energy faster
-    this.attack = 12 
-    this.defense = 8 
   }
 }
 class Elf extends Character {
@@ -342,8 +471,6 @@ class Elf extends Character {
     this.int = 2 //intelect gives more money
     this.sta = 2 //stamina uses less energy when working
     this.rec = 6 //recovers energy faster
-    this.attack = 10
-    this.defense = 10
   }
 }
 class Dwarf extends Character {
@@ -352,32 +479,7 @@ class Dwarf extends Character {
     this.race = this.race[2]
     this.int = 2 //intelect gives more money
     this.sta = 6 //stamina uses less energy when working
-    this.rec = 2 //recovery replinishes energy faster
-    this.attack = 8
-    this.defense = 12   
-  }
-}
-
-//Enemy Minions
-class HumanEnemy extends Human {
-  constructor(name, attack, defense,){
-    super(name, attack, defense)
-    this.name = `${this.clss[Math.floor(Math.random() * this.clss.length)]} human enemy`
-    this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
-  }
-}
-class ElfEnemy extends Elf {
-  constructor(attack, defense){
-    super(attack, defense)
-    this.name = `${this.clss[Math.floor(Math.random() * this.clss.length)]} elf enemy`
-    this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
-  }
-}
-class DwarfEnemy extends Dwarf {
-  constructor(attack, defense){
-    super(attack, defense)
-    this.name = `${this.clss[Math.floor(Math.random() * this.clss.length)]} dwarf enemy`
-    this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
+    this.rec = 2 //recovery replinishes energy faster  
   }
 }
 
@@ -387,6 +489,8 @@ class HumanRange extends Human {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[0]
+    this.attack = 10
+    this.defense = 10  
     this.weapon = 'Bow'
   }
 }
@@ -394,13 +498,18 @@ class HumanMelee extends Human {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[1]
+    this.attack = 8
+    this.defense = 12   
     this.weapon = 'Sword'
+    
   }
 }
 class HumanMagic extends Human {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[2]
+    this.attack = 12
+    this.defense = 8  
     this.weapon = 'Wand'
   }
 }
@@ -408,6 +517,8 @@ class ElfRange extends Elf {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[0]
+    this.attack = 10
+    this.defense = 10   
     this.weapon = 'Throwing Knives'
   }
 } 
@@ -415,13 +526,18 @@ class ElfMelee extends Elf {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[1]
+    this.attack = 8
+    this.defense = 12   
     this.weapon = 'Spear'
+    
   }
 }
 class ElfMagic extends Elf {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[2]
+    this.attack = 12
+    this.defense = 8   
     this.weapon = 'Staff'
   }
 }
@@ -429,6 +545,8 @@ class ElfMagic extends Elf {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[0]
+    this.attack = 10
+    this.defense = 10   
     this.weapon = 'Crossbow'
   }
 }
@@ -436,33 +554,46 @@ class DwarfMelee extends Dwarf {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[1]
+    this.attack = 8
+    this.defense = 12   
     this.weapon = 'Hammer'
+    
   }
 }
 class DwarfMagic extends Dwarf {
   constructor(name, weapon){
     super(name);
     this.clss = this.clss[2]
+    this.attack = 12
+    this.defense = 8   
     this.weapon = 'Orb'
   }
 }
 
 ////////////////////////////////////////////////Instances////////////////////////////////////////////////////////////////////////
 //Player instance
-let player = null; 
+let player = null;
 
 //Enemies instance
 const finalBoss = new FinalBoss()
-const miniBoss = new MiniBoss()
+const miniBoss1 = new MiniBoss1()
+const miniBoss2 = new MiniBoss2()
+const miniBoss3 = new MiniBoss3()
 const humanEnemy1 = new HumanEnemy()
-const elfEnemy1 = new ElfEnemy()
-const dwarEnemy1 = new DwarfEnemy()
 const humanEnemy2 = new HumanEnemy()
-const elfEnemy2 = new ElfEnemy()
-const dwarEnemy2 = new DwarfEnemy()
 const humanEnemy3 = new HumanEnemy()
+const humanEnemy4 = new HumanEnemy()
+const humanEnemy5 = new HumanEnemy()
+const elfEnemy1 = new ElfEnemy()
+const elfEnemy2 = new ElfEnemy()
 const elfEnemy3 = new ElfEnemy()
+const elfEnemy4 = new ElfEnemy()
+const elfEnemy5 = new ElfEnemy()
+const dwarEnemy1 = new DwarfEnemy()
+const dwarEnemy2 = new DwarfEnemy()
 const dwarEnemy3 = new DwarfEnemy()
+const dwarEnemy4 = new DwarfEnemy()
+const dwarEnemy5 = new DwarfEnemy()
 
 
 let playerGender = 'Male'
@@ -470,7 +601,8 @@ let playerGender = 'Male'
 
 ////////////////////////////////////////////////////Global Functions////////////////////////////////////////////////////////////////////
 
-let enemyArr = [finalBoss, miniBoss, humanEnemy1, elfEnemy1, dwarEnemy1, humanEnemy2, elfEnemy2, dwarEnemy2, humanEnemy3, elfEnemy3, dwarEnemy3]
+// let enemyArr = [finalBoss, miniBoss, enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8]
+let enemyArr = [finalBoss, miniBoss1, humanEnemy1, humanEnemy2, humanEnemy3, humanEnemy4, humanEnemy5, miniBoss2, elfEnemy1, elfEnemy2, elfEnemy3, elfEnemy4, elfEnemy5, miniBoss3, dwarEnemy1, dwarEnemy2, dwarEnemy3, dwarEnemy4, dwarEnemy5]
 const showStats = () => {
   charStats.innerHTML = `Attack: ${player.attack} <br> Defense: ${player.defense} <br> Intellect: ${player.int} <br> Stamina: ${player.sta} <br> Recovery: ${player.rec}`
 }
@@ -515,6 +647,9 @@ maleBtn.addEventListener('click', (evt) => {
   ///////Remove female pictures(9) above////////////
   //Male pictures
   if(player.race === 'Human'){
+    createImg.classList.add('human-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('dwarf-background')
     if(player.clss === 'melee'){
       //Picture here
       //remove others(8)
@@ -527,6 +662,9 @@ maleBtn.addEventListener('click', (evt) => {
     }
   }
   if(player.race === 'Elf'){
+    createImg.classList.add('elf-background')
+    createImg.classList.remove('human-background')
+    createImg.classList.remove('dwarf-background')
     if(player.clss === 'melee'){
       //Picture here
       //remove others(8)
@@ -541,6 +679,9 @@ maleBtn.addEventListener('click', (evt) => {
     }
   }
   if(player.race === 'Dwarf'){
+    createImg.classList.add('dwarf-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('human-background')
     if(player.clss === 'melee'){
       //Picture here
       //remove others(8)
@@ -566,6 +707,9 @@ femaleBtn.addEventListener('click', (evt) => {
   ///////Remove Male pictures(9) above////////////
   //Female pictures
   if(player.race === 'Human'){
+    createImg.classList.add('human-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('dwarf-background')
     if(player.clss === 'melee'){
       //Picture here
       //remove others(8)
@@ -578,6 +722,9 @@ femaleBtn.addEventListener('click', (evt) => {
     }
   }
   if(player.race === 'Elf'){
+    createImg.classList.add('elf-background')
+    createImg.classList.remove('human-background')
+    createImg.classList.remove('dwarf-background')
     if(player.clss === 'melee'){
       //Picture here
       //remove others(8)
@@ -590,6 +737,9 @@ femaleBtn.addEventListener('click', (evt) => {
     }
   }
   if(player.race === 'Dwarf'){
+    createImg.classList.add('dwarf-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('human-background')
     if(player.clss === 'melee'){
       //Picture here
       //remove others(8)
@@ -610,6 +760,9 @@ humanBtn.addEventListener('click', (evt) => {
   meleeBtn.style.color = 'white';
   rangeBtn.style.color = 'white';
   magicBtn.style.color = 'white';
+  createImg.classList.add('human-background')
+  createImg.classList.remove('elf-background')
+  createImg.classList.remove('dwarf-background')
   player = new Human;
   //Images
   if(playerGender === 'Male'){
@@ -637,6 +790,9 @@ elfBtn.addEventListener('click', (evt) => {
   meleeBtn.style.color = 'white';
   rangeBtn.style.color = 'white';
   magicBtn.style.color = 'white';
+  createImg.classList.add('elf-background')
+  createImg.classList.remove('human-background')
+  createImg.classList.remove('dwarf-background')
   player = new Elf;
   //Images
   if(playerGender === 'Male'){
@@ -664,6 +820,9 @@ dwarfBtn.addEventListener('click', (evt) => {
   meleeBtn.style.color = 'white';
   rangeBtn.style.color = 'white';
   magicBtn.style.color = 'white';
+  createImg.classList.add('dwarf-background')
+  createImg.classList.remove('elf-background')
+  createImg.classList.remove('human-background')
   player = new Dwarf;
   //Images
   if(playerGender === 'Male'){
@@ -683,14 +842,19 @@ dwarfBtn.addEventListener('click', (evt) => {
     maleElfRng.classList.remove('display')
   }
 })
+
 meleeBtn.addEventListener('click', (evt) => {
   if(player === null){
     alert('choose a race first');
-  } 
-  if(player.race === 'Human'){
+  } else {
     meleeBtn.style.color = 'red';
     rangeBtn.style.color = 'white';
     magicBtn.style.color = 'white';
+  }
+  if(player.race === 'Human'){
+    createImg.classList.add('human-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('dwarf-background')
     player = new HumanMelee;
     //Images
     if(playerGender === 'Male'){
@@ -698,23 +862,21 @@ meleeBtn.addEventListener('click', (evt) => {
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       //////Picture here//////
-      //remove others(8)
-      maleElfMgc.classList.remove('display')
-      maleElfRng.classList.remove('display')
+      //remove fighting class pictures(2)
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
       maleElfMgc.classList.remove('display')
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
-      femaleHumRng.classList.add('display')
-      //remove others(8)
+      /////Picture here//////
+      //remove fighting class pictures(2)
     }
   }
   if(player.race === 'Elf'){
-    meleeBtn.style.color = 'red';
-    rangeBtn.style.color = 'white';
-    magicBtn.style.color = 'white';
+    createImg.classList.add('elf-background')
+    createImg.classList.remove('human-background')
+    createImg.classList.remove('dwarf-background')
     player = new ElfMelee;
     //Images
     if(playerGender === 'Male'){
@@ -722,7 +884,9 @@ meleeBtn.addEventListener('click', (evt) => {
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
+      maleElfMgc.classList.remove('display')
+      maleElfRng.classList.remove('display')
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
@@ -730,13 +894,14 @@ meleeBtn.addEventListener('click', (evt) => {
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
+      femaleHumRng.classList.remove('display')
     }
   } 
   if(player.race === 'Dwarf'){
-    meleeBtn.style.color = 'red';
-    rangeBtn.style.color = 'white';
-    magicBtn.style.color = 'white';
+    createImg.classList.add('dwarf-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('human-background')
     player = new DwarfMelee;
     //Images
     if(playerGender === 'Male'){
@@ -744,7 +909,7 @@ meleeBtn.addEventListener('click', (evt) => {
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
@@ -752,25 +917,30 @@ meleeBtn.addEventListener('click', (evt) => {
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
   }
 })
+
 rangeBtn.addEventListener('click', (evt) => {
   if(player === null){
     alert('choose a race first');
-  } 
-  if(player.race === 'Human'){
+  } else {
     meleeBtn.style.color = 'white';
     rangeBtn.style.color = 'red';
     magicBtn.style.color = 'white';
+  }
+  if(player.race === 'Human'){
+    createImg.classList.add('human-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('dwarf-background')
     player = new HumanRange;
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
@@ -778,20 +948,20 @@ rangeBtn.addEventListener('click', (evt) => {
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
       femaleHumRng.classList.add('display')
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
   } 
   if(player.race === 'Elf'){
-    meleeBtn.style.color = 'white';
-    rangeBtn.style.color = 'red';
-    magicBtn.style.color = 'white';
+    createImg.classList.add('elf-background')
+    createImg.classList.remove('human-background')
+    createImg.classList.remove('dwarf-background')
     player = new ElfRange;
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       maleElfRng.classList.add('display')
-      //remove others(8)
+      //remove fighting class pictures(2)
       maleElfMgc.classList.remove('display')
     }
     if(playerGender === 'Female'){
@@ -800,20 +970,20 @@ rangeBtn.addEventListener('click', (evt) => {
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
   }
   if(player.race === 'Dwarf'){
-    meleeBtn.style.color = 'white';
-    rangeBtn.style.color = 'red';
-    magicBtn.style.color = 'white';
+    createImg.classList.add('dwarf-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('human-background')
     player = new DwarfRange;
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
@@ -821,25 +991,29 @@ rangeBtn.addEventListener('click', (evt) => {
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
   }
 })
 magicBtn.addEventListener('click', (evt) => {
   if(player === null){
     alert('choose a race first');
-  } 
-  if(player.race === 'Human'){
+  } else {
     meleeBtn.style.color = 'white';
     rangeBtn.style.color = 'white';
     magicBtn.style.color = 'red';
+  }
+  if(player.race === 'Human'){
+    createImg.classList.add('human-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('dwarf-background')
     player = new HumanMagic;
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
@@ -847,20 +1021,20 @@ magicBtn.addEventListener('click', (evt) => {
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
   } 
   if(player.race === 'Elf'){
-    meleeBtn.style.color = 'white';
-    rangeBtn.style.color = 'white';
-    magicBtn.style.color = 'red';
+    createImg.classList.add('elf-background')
+    createImg.classList.remove('human-background')
+    createImg.classList.remove('dwarf-background')
     player = new ElfMagic;
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       maleElfMgc.classList.add('display')
-      //remove others(8)
+      //remove fighting class pictures(2)
       maleElfRng.classList.remove('display')
     }
     if(playerGender === 'Female'){
@@ -869,20 +1043,21 @@ magicBtn.addEventListener('click', (evt) => {
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
+      femaleHumRng.classList.remove('display')
     }
   } 
   if(player.race === 'Dwarf'){
-    meleeBtn.style.color = 'white';
-    rangeBtn.style.color = 'white';
-    magicBtn.style.color = 'red';
+    createImg.classList.add('dwarf-background')
+    createImg.classList.remove('elf-background')
+    createImg.classList.remove('human-background')
     player = new DwarfMagic;
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
       //remove female pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
@@ -890,7 +1065,7 @@ magicBtn.addEventListener('click', (evt) => {
       maleElfRng.classList.remove('display')
       //remove male pictures(9)
       //////Picture here//////
-      //remove others(8)
+      //remove fighting class pictures(2)
     }
   }
 })
@@ -917,78 +1092,102 @@ createBtn.addEventListener('click', (evt) => {
     if(playerGender === 'Male'){
       player.gender = 'Male' //character constructor change
       if(player.race === 'Human'){
+        mainPg.classList.add('human-background')
         if(player.clss === 'melee'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'magic'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         }
       }
       if(player.race === 'Elf'){
+        mainPg.classList.add('elf-background')
         if(player.clss === 'melee'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           maleElfRng.classList.remove('display')
           maleElfRng2.classList.add('display')
+          maleElfRng3.classList.add('display')
         } else if(player.clss === 'magic'){
           maleElfMgc.classList.remove('display')
           maleElfMgc2.classList.add('display')
+          maleElfMgc3.classList.add('display')
         }
       }
       if(player.race === 'Dwarf'){
+        mainPg.classList.add('dwarf-background')
         if(player.clss === 'melee'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'magic'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         }
       }
     }
     if(playerGender === 'Female'){
       player.gender = 'Female' //
       if(player.race === 'Human'){
+        mainPg.classList.add('human-background')
         if(player.clss === 'melee'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           femaleHumRng.classList.remove('display')
           femaleHumRng2.classList.add('display')
+          femaleHumRng3.classList.add('display')
         } else if(player.clss === 'magic'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         }
       }
       if(player.race === 'Elf'){
+        mainPg.classList.add('elf-background')
         if(player.clss === 'melee'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'magic'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         }
       }
       if(player.race === 'Dwarf'){
+        mainPg.classList.add('dwarf-background')
         if(player.clss === 'melee'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         } else if(player.clss === 'magic'){
           //Remove picture number 1 here
           //Add picture number 2 here 
+          //Add picture number 3 here 
         }
       }
     }
@@ -1099,8 +1298,19 @@ fightBtn.addEventListener('mouseout', (evt) => {
 })
 
 fightBtn.addEventListener('click', (evt) => {
+  setTimeout(() => {
+    console.log(`Player class is ${player.clss}`)
+    console.log(`Player attack is ${player.attack}`)
+    console.log(`Player defense is ${player.defense}`)
+    // console.log(`Enemy is ${enemyArr[enemyArr.length - 1]}`)
+    console.log(`Enemy race is ${enemyArr[enemyArr.length - 1].race}`)
+    console.log(`Enemy class is ${enemyArr[enemyArr.length - 1].clss}`)
+    console.log(`Enemy gender is ${enemyArr[enemyArr.length - 1].gender}`)
+    console.log(`Enemy attack is ${enemyArr[enemyArr.length - 1].attack}`)
+    console.log(`Enemy defense is ${enemyArr[enemyArr.length - 1].defense}`)
+  }, 0500)
   if(enemyArr.length === 0){  //replay option when last boss defeated
-    enemyArr = [finalBoss, miniBoss, humanEnemy1, elfEnemy1, dwarEnemy1, humanEnemy2, elfEnemy2, dwarEnemy2, humanEnemy3, elfEnemy3, dwarEnemy3]
+    enemyArr = [finalBoss, miniBoss1, humanEnemy1, humanEnemy2, humanEnemy3, humanEnemy4, humanEnemy5, miniBoss2, elfEnemy1, elfEnemy2, elfEnemy3, elfEnemy4, elfEnemy5, miniBoss3, dwarEnemy1, dwarEnemy2, dwarEnemy3, dwarEnemy4, dwarEnemy5]
     enemyArr.forEach((element) => {
       element.hp = 100
     })
@@ -1110,13 +1320,13 @@ fightBtn.addEventListener('click', (evt) => {
     player.energy = 100
     charEnergy.textContent = player.energy
     fightBtn.textContent = `Fight(${enemyArr.length})`
-    if(player.race === 'Human'){
+    if(player.clss === 'magic'){
       player.attack = 12
       player.defense = 8
-    } else if(player.race === 'Elf'){
+    } else if(player.clss === 'range'){
       player.attack = 10
       player.defense = 10
-    } else if(player.race === 'Dwarf'){
+    } else if(player.clss === 'melee'){
       player.attack = 8
       player.defense = 12
     }
@@ -1133,121 +1343,125 @@ fightBtn.addEventListener('click', (evt) => {
     eatBtn.style.color = 'white'
     workBtn.style.color = 'white'
     fightPg.classList.add('pop-up')
-    maleElfRngEn.classList.add('display')
-    maleElfMgcEn.classList.add('display')
-    femaleHumRngEn.classList.add('display')
   
     //Images
-    if(playerGender === 'Male'){
+    if(player.gender === 'Male'){
       if(player.race === 'Human'){
         if(player.clss === 'melee'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         } else if(player.clss === 'magic'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         }
       }
       if(player.race === 'Elf'){
         if(player.clss === 'melee'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           maleElfRng2.classList.remove('display')
-          maleElfRng3.classList.add('display')
         } else if(player.clss === 'magic'){
           maleElfMgc2.classList.remove('display')
-          maleElfMgc3.classList.add('display')
         }
       }
       if(player.race === 'Dwarf'){
         if(player.clss === 'melee'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         } else if(player.clss === 'magic'){
-          //Remove picture number 2 here
-          //Add picture number 3 here 
+          //Remove picture number 2 here 
         }
       }
     }
-    if(playerGender === 'Female'){
+    if(player.gender === 'Female'){
       if(player.race === 'Human'){
         if(player.clss === 'melee'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           femaleHumRng2.classList.remove('display')
-          femaleHumRng3.classList.add('display')
         } else if(player.clss === 'magic'){
-          //Remove picture number 2 here
-          //Add picture number 3 here 
+          //Remove picture number 2 here 
         }
       }
       if(player.race === 'Elf'){
         if(player.clss === 'melee'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           //Remove picture number 2 here
           //Add picture number 3 here 
         } else if(player.clss === 'magic'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         }
       }
       if(player.race === 'Dwarf'){
         if(player.clss === 'melee'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         } else if(player.clss === 'range'){
           //Remove picture number 2 here
           //Add picture number 3 here 
         } else if(player.clss === 'magic'){
           //Remove picture number 2 here
-          //Add picture number 3 here 
         }
       }
     }
     //Enemy Images
+    //Remove all images here
+    femaleHumRngEn.classList.remove('display')
+    maleElfRngEn.classList.remove('display')
+    maleElfMgcEn.classList.remove('display')
+    //Remove all images here
     if(enemyArr.length === 1){
       //Add Final boss picture here
     } else {
       if(enemyArr[enemyArr.length - 1].gender === 'Male'){
         if(enemyArr[enemyArr.length - 1].race === 'Human'){
           if(enemyArr[enemyArr.length - 1].clss === 'melee'){
+          enemyArr[enemyArr.length - 1].attack = 8
+          enemyArr[enemyArr.length - 1].defense = 12
             //Add Enemy picture here 
           } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
-            //Add Enemy picture here 
+          enemyArr[enemyArr.length - 1].attack = 10
+          enemyArr[enemyArr.length - 1].defense = 10
+            //Add Enemy picture here  
           } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
+          enemyArr[enemyArr.length - 1].attack = 12
+          enemyArr[enemyArr.length - 1].defense = 8
             //Add Enemy picture here 
           }
         }
         if(enemyArr[enemyArr.length - 1].race === 'Elf'){
           if(enemyArr[enemyArr.length - 1].clss === 'melee'){
+          enemyArr[enemyArr.length - 1].attack = 8
+          enemyArr[enemyArr.length - 1].defense = 12
             //Add Enemy picture here 
           } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
+            enemyArr[enemyArr.length - 1].attack = 10
+          enemyArr[enemyArr.length - 1].defense = 10
             maleElfRngEn.classList.add('display')
           } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
+          enemyArr[enemyArr.length - 1].attack = 12
+          enemyArr[enemyArr.length - 1].defense = 8
             maleElfMgcEn.classList.add('display')
           }
         }
-        if(enemyArr[enemyArr.length - 1].race === 'Dwarf'){
-          if(enemyArr[enemyArr.length - 1].clss === 'melee'){
+        if(enemyArr[(enemyArr.length - 1)].race === 'Dwarf'){
+          if(enemyArr[(enemyArr.length - 1)].clss === 'melee'){
+          enemyArr[enemyArr.length - 1].attack = 8
+          enemyArr[enemyArr.length - 1].defense = 12
             //Add Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
+          } else if(enemyArr[(enemyArr.length - 1)].clss === 'range'){
+          enemyArr[enemyArr.length - 1].attack = 10
+          enemyArr[enemyArr.length - 1].defense = 10
             //Add Enemy picture here  
-          } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
+          } else if(enemyArr[(enemyArr.length - 1)].clss === 'magic'){
+          enemyArr[enemyArr.length - 1].attack = 12
+          enemyArr[enemyArr.length - 1].defense = 8
             //Add Enemy picture here 
           }
         }
       }
-      if(enemyArr[enemyArr.length - 1].gender === 'Female'){
+      if(enemyArr[enemyArr.length - 1].gender === 'Female'){// mini Boss
         if(enemyArr[enemyArr.length - 1].race === 'Human'){
           if(enemyArr[enemyArr.length - 1].clss === 'melee'){
             //Add Enemy picture here 
@@ -1281,46 +1495,32 @@ fightBtn.addEventListener('click', (evt) => {
 })
 
 atckBtn.addEventListener('click', (evt) => {
-  /////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  player.attack = 50
-  /////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  atckBtn.disabled = true
-  retreatBtn.disabled = true
-  setTimeout(() => {
-    atckBtn.disabled = false
-    retreatBtn.disabled = false
-  }, 2000)
-  player.attackMode(enemyArr[enemyArr.length - 1])
-  if(player.hp <= 0 && enemyArr[enemyArr.length - 1].hp > 0){
+  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  player.attack = 70
+  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp > 0){
+    atckBtn.disabled = true
+    retreatBtn.disabled = true
+    setTimeout(() => {
+      atckBtn.disabled = false
+      retreatBtn.disabled = false
+    }, 2000)
+    player.attackMode(enemyArr[enemyArr.length - 1])
+  } else {
     retreatBtn.disabled = true
     atckBtn.disabled = true
-    // secTxt.textContent = `${player.name} was killed in battle. You lose`
-    // secTxt.style.color = 'red'
-  } else if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp <= 0){
-    retreatBtn.disabled = true
-    atckBtn.disabled = true
-    // secTxt.textContent = `${enemyArr[enemyArr.length - 1].name} was defeated! ${player.name} won`
-    // secTxt.style.color = 'green'
-  }else {
-    // retreatBtn.disabled = false
-    // atckBtn.disabled = false
   }
 })
 
 retreatBtn.addEventListener('click', (evt) => {
-  if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp <= 0){
-    retreatBtn.disabled = true
-    atckBtn.disabled = true
-  } else if( player.hp <= 0 && enemyArr[enemyArr.length - 1].hp > 0){
-    retreatBtn.disabled = true
-    atckBtn.disabled = true
-  } else {
+  if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp > 0){
     atckBtn.disabled = true
     retreatBtn.disabled = true
     player.hp = 0
@@ -1347,9 +1547,10 @@ retreatBtn.addEventListener('click', (evt) => {
       secTxt.style.color = 'red'
       player.energy -= 15
     }
+  } else {
+    atckBtn.disabled = true
+    retreatBtn.disabled = true
   }
-  atckBtn.disabled = true
-  retreatBtn.disabled = true
 })
 
 fightClose.addEventListener('click', (evt) => {
@@ -1372,11 +1573,6 @@ fightClose.addEventListener('click', (evt) => {
     retreatBtn.disabled = false
     charMoney.textContent = player.money
     charEnergy.textContent = player.energy
-    arrowHit.classList.remove('arrow-dmg')
-    arrowAtk.classList.remove('arrow-attack')
-    maleElfMgcEn.classList.remove('display')
-    maleElfRngEn.classList.remove('display')
-    arrowHit.classList.remove('display')
     //Player wins
     if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp <= 0){
       player.hp = 100
@@ -1391,151 +1587,72 @@ fightClose.addEventListener('click', (evt) => {
         enemyArr[enemyArr.length - 1].hp = 100;
       }
     }
-    //Wether or not final boss was defeated
-    if(enemyArr.length === 0){
+
+    //Final Battle: before and after
+    if(enemyArr.length === 1){
+      fightBtn.textContent = `Final Battle`
+    } else if(enemyArr.length === 0){ //win
       fightBtn.textContent = `Replay`
     } else {
       fightBtn.textContent = `Fight(${enemyArr.length})`
     }
-
+    
     //Images
-    if(playerGender === 'Male'){
+    if(player.gender === 'Male'){
       if(player.race === 'Human'){
         if(player.clss === 'melee'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'range'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'magic'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         }
       }
       if(player.race === 'Elf'){
         if(player.clss === 'melee'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'range'){
-          maleElfRng3.classList.remove('display')
           maleElfRng2.classList.add('display')
         } else if(player.clss === 'magic'){
-          maleElfMgc3.classList.remove('display')
           maleElfMgc2.classList.add('display')
         }
       }
       if(player.race === 'Dwarf'){
         if(player.clss === 'melee'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'range'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'magic'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         }
       }
     }
-    if(playerGender === 'Female'){
-      player.gender = 'Female' //
+    if(player.gender === 'Female'){
       if(player.race === 'Human'){
         if(player.clss === 'melee'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'range'){
-          femaleHumRng3.classList.remove('display')
           femaleHumRng2.classList.add('display')
         } else if(player.clss === 'magic'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         }
       }
       if(player.race === 'Elf'){
         if(player.clss === 'melee'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'range'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'magic'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         }
       }
       if(player.race === 'Dwarf'){
         if(player.clss === 'melee'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'range'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
         } else if(player.clss === 'magic'){
-          //Remove picture number 3 here
           //Add picture number 2 here 
-        }
-      }
-    }
-    //Enemy Images
-    if(enemyArr.length === 1 || enemyArr.length === 0){
-      //Remove Final boss picture here
-    } else {
-      if(enemyArr[enemyArr.length - 1].gender === 'Male'){
-        if(enemyArr[enemyArr.length - 1].race === 'Human'){
-          if(enemyArr[enemyArr.length - 1].clss === 'melee'){
-            //Remove Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
-            //Remove Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
-            //Remove Enemy picture here 
-          }
-        }
-        if(enemyArr[enemyArr.length - 1].race === 'Elf'){
-          if(enemyArr[enemyArr.length - 1].clss === 'melee'){
-            //Remove Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
-            maleElfRngEn.classList.remove('display')
-          } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
-            maleElfMgcEn.classList.remove('display')
-          }
-        }
-        if(enemyArr[enemyArr.length - 1].race === 'Dwarf'){
-          if(enemyArr[enemyArr.length - 1].clss === 'melee'){
-            //Remove Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
-            //Remove Enemy picture here  
-          } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
-            //Remove Enemy picture here 
-          }
-        }
-      }
-      if(enemyArr[enemyArr.length - 1].gender === 'Female'){
-        if(enemyArr[enemyArr.length - 1].race === 'Human'){
-          if(enemyArr[enemyArr.length - 1].clss === 'melee'){
-            //Remove Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
-            femaleHumRngEn.classList.remove('display')
-          } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
-            //Remove Enemy picture here 
-          }
-        }
-        if(enemyArr[enemyArr.length - 1].race === 'Elf'){
-          if(enemyArr[enemyArr.length - 1].clss === 'melee'){
-            //Remove Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
-            //Remove Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
-            //Remove Enemy picture here 
-          }
-        }
-        if(enemyArr[enemyArr.length - 1].race === 'Dwarf'){
-          if(enemyArr[enemyArr.length - 1].clss === 'melee'){
-            //Remove Enemy picture here  
-          } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
-            //Remove Enemy picture here 
-          } else if(enemyArr[enemyArr.length - 1].clss === 'magic'){
-            //Remove Enemy picture here 
-          }
         }
       }
     }
@@ -1584,19 +1701,19 @@ eatClose.addEventListener('click', (evt) => {
   storeBtn.disabled = false
   workBtn.disabled = false
   //Images
-  if(playerGender === 'Male'){
+  if(player.gender === 'Male'){
     if(player.race === 'Human'){
       if(player.clss === 'melee'){
-        //Add picture number 3 here 
+        //Add picture number 2 here 
       } else if(player.clss === 'range'){
-        //Add picture number 3 here 
+        //Add picture number 2 here 
       } else if(player.clss === 'magic'){
-        //Add picture number 3 here 
+        //Add picture number 2 here 
       }
     }
     if(player.race === 'Elf'){
       if(player.clss === 'melee'){
-        //Add picture number 3 here 
+        //Add picture number 2 here 
       } else if(player.clss === 'range'){
         maleElfRng2.classList.add('display')
       } else if(player.clss === 'magic'){
@@ -1613,8 +1730,7 @@ eatClose.addEventListener('click', (evt) => {
       }
     }
   }
-  if(playerGender === 'Female'){
-    player.gender = 'Female' //
+  if(player.gender === 'Female'){
     if(player.race === 'Human'){
       if(player.clss === 'melee'){
         //Add picture number 2 here 
@@ -1687,19 +1803,19 @@ workClose.addEventListener('click', (evt) => {
   storeBtn.disabled = false
   eatBtn.disabled = false
   //Images
-  if(playerGender === 'Male'){
+  if(player.gender === 'Male'){
     if(player.race === 'Human'){
       if(player.clss === 'melee'){
-        //Add picture number 3 here 
+        //Add picture number 2 here 
       } else if(player.clss === 'range'){
-        //Add picture number 3 here 
+        //Add picture number 2 here 
       } else if(player.clss === 'magic'){
-        //Add picture number 3 here 
+        //Add picture number 2 here 
       }
     }
     if(player.race === 'Elf'){
       if(player.clss === 'melee'){
-        //Add picture number 3 here 
+        //Add picture number 2 here 
       } else if(player.clss === 'range'){
         maleElfRng2.classList.add('display')
       } else if(player.clss === 'magic'){
@@ -1716,8 +1832,7 @@ workClose.addEventListener('click', (evt) => {
       }
     }
   }
-  if(playerGender === 'Female'){
-    player.gender = 'Female' //
+  if(player.gender === 'Female'){
     if(player.race === 'Human'){
       if(player.clss === 'melee'){
         //Add picture number 2 here 
