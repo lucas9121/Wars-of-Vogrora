@@ -27,3 +27,7 @@ store:
 - def potion = +1 defense (max 5)
 - You will need at least two potions to defeat the mini boss
 - You will need at least 9 potions (5atk, 4def or vice versa) to defeat final boss
+
+
+## Link
+https://lucas9121.github.io/Wars-of-Vogrora/
