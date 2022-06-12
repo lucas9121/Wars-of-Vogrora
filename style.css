@@ -1,11 +1,19 @@
+body {
+    margin: 0;
+}
+
+body > div {
+    height: 100vh;
+}
+
+
 /* /////////Title Page///////////// */
 body > div#first {
-    height: 900px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: right; /* aligns item top to bottom on column*/
-    align-items: center;  /* aligns items left to right  on column*/
+    justify-content: center; /* aligns item top to bottom on column*/
+    align-items: center;  /* aligns items left to right on column*/
     padding: 8px;
     background-color: black;
 }
@@ -16,6 +24,7 @@ h1#title{
     text-transform: uppercase;
     font-size: 150px;
     text-shadow: 10px 20px 5px red;
+    margin-top: 0;
 }
 button#start {
     color: red;
@@ -27,7 +36,6 @@ button#start {
 
 /* /////////Story Page///////////// */
 body > div#story {
-    height: 900px;
     background-color: black;
     display: none;
     /* display: flex; */
@@ -43,7 +51,7 @@ body > div#story {
     /* margin-top: 900px; */
 }
 @keyframes story-paragraph {
-    from {margin-top: 900px;}
+    from {margin-top: 100vh;}
     to {margin-top: 0;}
 }
 /* .story-animation {
@@ -54,7 +62,6 @@ body > div#story {
 
 /* /////////Create Page///////////// */
 body > div#create {
-    height: 900px;
     display: none;
     flex-direction: row;
     padding: 2px;
@@ -138,6 +145,12 @@ div#char-image {
 }
 
 /* Characters on Create Page */
+.male-human-melee{
+    display: none;
+    position: absolute;
+    top: 17%;
+    left: 45%;
+}
 .male-elf-range {
     display: none;
     position: absolute;
@@ -162,7 +175,6 @@ div#char-image {
 
 /* /////////Main Page///////////// */
 body > div#main {
-    height: 900px;
     display: none;
     flex-direction: column;
     justify-content: space-between;
@@ -183,6 +195,12 @@ div.buttons {
 }
 
 /* Characters on Main Page */
+.male-human-melee2{
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
 .male-elf-range2 {
     display: none;
     position: absolute;
@@ -351,6 +369,26 @@ div.fight {
 
 
 /* Characters on Fight Pop Up */
+.male-human-melee3{
+    display: none;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 41%;
+    left: 11%;
+}
+
+.male-human-melee-enemy {
+    display: none;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 41%;
+    left: 77%;
+    transform: rotateY(180deg);
+    filter: hue-rotate(110deg);
+}
+
 .male-elf-range3 {
     display: none;
     height: 300px;
