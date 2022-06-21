@@ -142,6 +142,37 @@ div.create-char {
 div#char-image {
     flex: 1;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div#char-image > p {
+    font-size: 1.5em;
+    color: white;
+}
+
+div#char-image > div{
+    background: #0000007d;
+    min-height: 112px;
+}
+
+div#char-image > div > ul {
+    margin: 0;
+    font-size: 1.5em;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+    color: white;
+}
+
+div#char-image > div > p{
+    margin: 0;
+    padding: 10px 0;
+    font-size: 1.5em;
+    color: white;
 }
 
 /* Characters on Create Page */
@@ -153,22 +184,24 @@ div#char-image {
 }
 .male-elf-range {
     display: none;
-    position: absolute;
+    /* position: absolute;
     top: 17%;
-    left: 45%;
+    left: 45%; */
 }
 .male-elf-magic {
     display: none;
-    position: absolute;
+    /* position: absolute;
     top: 17%;
-    left: 45%;
+    left: 45%; */
 }
 .female-human-range {
     display: none;
-    position: absolute;
+    max-width: 100%;
+    max-height: 618px;
+    /* position: absolute;
     height: 700px;
     left: 30%;
-    bottom: 15%;
+    bottom: 15%; */
 }
 
 
