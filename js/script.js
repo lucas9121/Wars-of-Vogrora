@@ -20,6 +20,7 @@ const magicBtn = document.querySelector('.char-class > button:nth-of-type(3)')
 const createName = document.querySelector('.create-char > input:nth-of-type(1)')
 const createBtn = document.querySelector('.create-char > input:nth-of-type(2)')
 ///Character Images
+const maleHumMel = document.querySelector('.male-human-melee')
 const maleElfRng = document.querySelector('.male-elf-range')
 const maleElfMgc = document.querySelector('.male-elf-magic')
 const femaleHumRng = document.querySelector('.female-human-range')
@@ -38,6 +39,7 @@ const fightBtn = document.querySelector('#fight')
 const eatBtn = document.querySelector('#eat')
 const workBtn = document.querySelector('#work')
 ///Main Images
+const maleHumMel2 = document.querySelector('.male-human-melee2')
 const maleElfRng2 = document.querySelector('.male-elf-range2')
 const maleElfMgc2 = document.querySelector('.male-elf-magic2')
 const femaleHumRng2 = document.querySelector('.female-human-range2')
@@ -58,6 +60,8 @@ const retreatBtn = document.querySelector('.fight > div:nth-of-type(2) > button:
 const firstTxt = document.querySelector('#first-text')
 const secTxt = document.querySelector('#second-text')
 ///Fight Images
+const maleHumMel3 = document.querySelector('.male-human-melee3')
+const maleHumMelEn = document.querySelector('.male-human-melee-enemy')
 const maleElfRng3 = document.querySelector('.male-elf-range3')
 const maleElfRngEn = document.querySelector('.male-elf-range-enemy')
 const arrowAtk = document.querySelector('.arrow')
@@ -650,31 +654,36 @@ maleBtn.addEventListener('click', (evt) => {
     createImg.classList.add('human-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('dwarf-background')
+    //Remove all Elf and Dwarf images(6)
+    maleElfMgc.classList.remove('display')
+    maleElfRng.classList.remove('display')
     if(player.clss === 'melee'){
-      //Picture here
-      //remove others(8)
+      maleHumMel.classList.add('display')
+      //remove other fight class (2)
     } else if(player.clss === 'range'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'magic'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     }
   }
   if(player.race === 'Elf'){
     createImg.classList.add('elf-background')
     createImg.classList.remove('human-background')
     createImg.classList.remove('dwarf-background')
+    //remove all Human and Dwarf images(6)
+    maleHumMel.classList.remove('display')
     if(player.clss === 'melee'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'range'){
       maleElfRng.classList.add('display')
-      //remove others(7)
+      //remove other fight class (2)
       maleElfMgc.classList.remove('display')
     } else if(player.clss === 'magic'){
       maleElfMgc.classList.add('display')
-      //remove others(7)
+      //remove other fight class (2)
       maleElfRng.classList.remove('display')
     }
   }
@@ -682,15 +691,19 @@ maleBtn.addEventListener('click', (evt) => {
     createImg.classList.add('dwarf-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('human-background')
+    //Remove all Elf and Human images(6)
+    maleElfMgc.classList.remove('display')
+    maleElfRng.classList.remove('display')
+    maleHumMel.classList.remove('display')
     if(player.clss === 'melee'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'range'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'magic'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     }
   }
 })
@@ -703,6 +716,7 @@ femaleBtn.addEventListener('click', (evt) => {
   ///////Remove Male pictures(9) below////////////
   maleElfRng.classList.remove('display')
   maleElfMgc.classList.remove('display')
+  maleHumMel.classList.remove('display')
 
   ///////Remove Male pictures(9) above////////////
   //Female pictures
@@ -710,45 +724,50 @@ femaleBtn.addEventListener('click', (evt) => {
     createImg.classList.add('human-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('dwarf-background')
+    //Remove all Elf and Dwarf images(6)
     if(player.clss === 'melee'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'range'){
       femaleHumRng.classList.add('display')
       //remove others(8)
     } else if(player.clss === 'magic'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     }
   }
   if(player.race === 'Elf'){
     createImg.classList.add('elf-background')
     createImg.classList.remove('human-background')
     createImg.classList.remove('dwarf-background')
+    //Remove all Human and Dwarf images(6)
+    femaleHumRng.classList.remove('display')
     if(player.clss === 'melee'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'range'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'magic'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     }
   }
   if(player.race === 'Dwarf'){
     createImg.classList.add('dwarf-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('human-background')
+    //Remove all Elf and Human images(6)
+    femaleHumRng.classList.remove('display')
     if(player.clss === 'melee'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'range'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     } else if(player.clss === 'magic'){
       //Picture here
-      //remove others(8)
+      //remove other fight class (2)
     }
   }
 })
@@ -764,23 +783,11 @@ humanBtn.addEventListener('click', (evt) => {
   createImg.classList.remove('elf-background')
   createImg.classList.remove('dwarf-background')
   player = new Human;
-  //Images
-  if(playerGender === 'Male'){
-    //Add Male Human default (melee)
-    //remove male pictures(8)
-    maleElfMgc.classList.remove('display')
-    maleElfRng.classList.remove('display')
-    //remove female pictures(9)
-    femaleHumRng.classList.remove('display')
-  }
-  if(playerGender === 'Female'){
-    // Add Female Human default (melee)
-    //remove female pictures(8)
-    femaleHumRng.classList.remove('display')
-    //remove male pictures(9)
-    maleElfMgc.classList.remove('display')
-    maleElfRng.classList.remove('display')
-  }
+  //Characters Image
+  maleHumMel.classList.remove('display')
+  maleElfMgc.classList.remove('display')
+  maleElfRng.classList.remove('display')
+  femaleHumRng.classList.remove('display')
 })
 
 elfBtn.addEventListener('click', (evt) => {
@@ -794,23 +801,11 @@ elfBtn.addEventListener('click', (evt) => {
   createImg.classList.remove('human-background')
   createImg.classList.remove('dwarf-background')
   player = new Elf;
-  //Images
-  if(playerGender === 'Male'){
-    //Add Male Elf default (melee)
-    //remove male pictures(8)
-    maleElfMgc.classList.remove('display')
-    maleElfRng.classList.remove('display')
-    //remove female pictures(9)
-    femaleHumRng.classList.remove('display')
-  }
-  if(playerGender === 'Female'){
-    // Add Female Elf default (melee)
-    //remove female pictures(8)
-    femaleHumRng.classList.remove('display')
-    //remove male pictures(9)
-    maleElfMgc.classList.remove('display')
-    maleElfRng.classList.remove('display')
-  }
+  //Characters Image
+  maleHumMel.classList.remove('display')
+  maleElfMgc.classList.remove('display')
+  maleElfRng.classList.remove('display')
+  femaleHumRng.classList.remove('display')
 })
 
 dwarfBtn.addEventListener('click', (evt) => {
@@ -824,23 +819,11 @@ dwarfBtn.addEventListener('click', (evt) => {
   createImg.classList.remove('elf-background')
   createImg.classList.remove('human-background')
   player = new Dwarf;
-  //Images
-  if(playerGender === 'Male'){
-    //Add Male Dwarf default (melee)
-    //remove male pictures(8)
-    maleElfMgc.classList.remove('display')
-    maleElfRng.classList.remove('display')
-    //remove female pictures(9)
-    femaleHumRng.classList.remove('display')
-  }
-  if(playerGender === 'Female'){
-    // Add Female Dwarf default (melee)
-    //remove female pictures(8)
-    femaleHumRng.classList.remove('display')
-    //remove male pictures(9)
-    maleElfMgc.classList.remove('display')
-    maleElfRng.classList.remove('display')
-  }
+  //Characters Image
+  maleHumMel.classList.remove('display')
+  maleElfMgc.classList.remove('display')
+  maleElfRng.classList.remove('display')
+  femaleHumRng.classList.remove('display')
 })
 
 meleeBtn.addEventListener('click', (evt) => {
@@ -858,17 +841,11 @@ meleeBtn.addEventListener('click', (evt) => {
     player = new HumanMelee;
     //Images
     if(playerGender === 'Male'){
-      //remove female pictures(9)
-      femaleHumRng.classList.remove('display')
-      //remove female pictures(9)
       //////Picture here//////
+      maleHumMel.classList.add('display')
       //remove fighting class pictures(2)
     }
     if(playerGender === 'Female'){
-      //remove male pictures(9)
-      maleElfMgc.classList.remove('display')
-      maleElfRng.classList.remove('display')
-      //remove male pictures(9)
       /////Picture here//////
       //remove fighting class pictures(2)
     }
@@ -941,6 +918,7 @@ rangeBtn.addEventListener('click', (evt) => {
       //remove female pictures(9)
       //////Picture here//////
       //remove fighting class pictures(2)
+      maleHumMel.classList.remove('display')
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
@@ -1014,6 +992,7 @@ magicBtn.addEventListener('click', (evt) => {
       //remove female pictures(9)
       //////Picture here//////
       //remove fighting class pictures(2)
+      maleHumMel.classList.remove('display')
     }
     if(playerGender === 'Female'){
       //remove male pictures(9)
@@ -1094,9 +1073,9 @@ createBtn.addEventListener('click', (evt) => {
       if(player.race === 'Human'){
         mainPg.classList.add('human-background')
         if(player.clss === 'melee'){
-          //Remove picture number 1 here
-          //Add picture number 2 here 
-          //Add picture number 3 here 
+          maleHumMel.classList.remove('display')
+          maleHumMel2.classList.add('display') 
+          maleHumMel3.classList.add('display')
         } else if(player.clss === 'range'){
           //Remove picture number 1 here
           //Add picture number 2 here 
@@ -1226,7 +1205,9 @@ storeBtn.addEventListener('click', (evt) => {
   fightBtn.disabled = true
   eatBtn.disabled = true
   workBtn.disabled = true
+  maleHumMel2.classList.remove('display')
   maleElfRng2.classList.remove('display')
+  maleElfMgc2.classList.remove('display')
   femaleHumRng2.classList.remove('display')
   storeBtn.style.color = 'red'
   storePg.classList.add('pop-up')
@@ -1276,16 +1257,64 @@ storeClose.addEventListener('click', (evt) => {
   defPtnTxt.style.color = 'black'
   storePg.classList.remove('pop-up')
   storeBtn.style.color = 'white'
+  //Images
   if(player.gender === 'Male'){
-    if(player.clss === 'range'){
-      maleElfRng2.classList.add('display')
-    } else if(player.clss === 'magic'){
-      maleElfMgc2.classList.add('display')
+    if(player.race === 'Human'){
+      if(player.clss === 'melee'){
+        //Add picture number 2 here 
+        maleHumMel2.classList.add('display')
+      } else if(player.clss === 'range'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'magic'){
+        //Add picture number 2 here 
+      }
+    }
+    if(player.race === 'Elf'){
+      if(player.clss === 'melee'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'range'){
+        maleElfRng2.classList.add('display')
+      } else if(player.clss === 'magic'){
+        maleElfMgc2.classList.add('display')
+      }
+    }
+    if(player.race === 'Dwarf'){
+      if(player.clss === 'melee'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'range'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'magic'){
+        //Add picture number 2 here 
+      }
     }
   }
   if(player.gender === 'Female'){
-    if(player.clss === 'range'){
-      femaleHumRng2.classList.add('display')
+    if(player.race === 'Human'){
+      if(player.clss === 'melee'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'range'){
+        femaleHumRng2.classList.add('display')
+      } else if(player.clss === 'magic'){
+        //Add picture number 2 here 
+      }
+    }
+    if(player.race === 'Elf'){
+      if(player.clss === 'melee'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'range'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'magic'){
+        //Add picture number 2 here 
+      }
+    }
+    if(player.race === 'Dwarf'){
+      if(player.clss === 'melee'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'range'){
+        //Add picture number 2 here 
+      } else if(player.clss === 'magic'){
+        //Add picture number 2 here 
+      }
     }
   }
 })
@@ -1348,7 +1377,7 @@ fightBtn.addEventListener('click', (evt) => {
     if(player.gender === 'Male'){
       if(player.race === 'Human'){
         if(player.clss === 'melee'){
-          //Remove picture number 2 here
+          maleHumMel2.classList.remove('display')
         } else if(player.clss === 'range'){
           //Remove picture number 2 here
         } else if(player.clss === 'magic'){
@@ -1419,7 +1448,7 @@ fightBtn.addEventListener('click', (evt) => {
           if(enemyArr[enemyArr.length - 1].clss === 'melee'){
           enemyArr[enemyArr.length - 1].attack = 8
           enemyArr[enemyArr.length - 1].defense = 12
-            //Add Enemy picture here 
+            maleHumMelEn.classList.add('display')
           } else if(enemyArr[enemyArr.length - 1].clss === 'range'){
           enemyArr[enemyArr.length - 1].attack = 10
           enemyArr[enemyArr.length - 1].defense = 10
@@ -1601,7 +1630,7 @@ fightClose.addEventListener('click', (evt) => {
     if(player.gender === 'Male'){
       if(player.race === 'Human'){
         if(player.clss === 'melee'){
-          //Add picture number 2 here 
+          maleHumMel2.classList.add('display')
         } else if(player.clss === 'range'){
           //Add picture number 2 here 
         } else if(player.clss === 'magic'){
@@ -1672,7 +1701,9 @@ eatBtn.addEventListener('click', (evt) => {
   fightBtn.disabled = true
   storeBtn.disabled = true
   workBtn.disabled = true
+  maleHumMel2.classList.remove('display')
   maleElfRng2.classList.remove('display')
+  maleElfMgc2.classList.remove('display')
   femaleHumRng2.classList.remove('display')
   fightBtn.style.color = 'white'
   storeBtn.style.color = 'white'
@@ -1704,7 +1735,7 @@ eatClose.addEventListener('click', (evt) => {
   if(player.gender === 'Male'){
     if(player.race === 'Human'){
       if(player.clss === 'melee'){
-        //Add picture number 2 here 
+        maleHumMel2.classList.add('display')
       } else if(player.clss === 'range'){
         //Add picture number 2 here 
       } else if(player.clss === 'magic'){
@@ -1774,7 +1805,9 @@ workBtn.addEventListener('click', (evt) => {
   fightBtn.disabled = true
   storeBtn.disabled = true
   eatBtn.disabled = true
+  maleHumMel2.classList.remove('display')
   maleElfRng2.classList.remove('display')
+  maleElfMgc2.classList.remove('display')
   femaleHumRng2.classList.remove('display')
   fightBtn.style.color = 'white'
   storeBtn.style.color = 'white'
@@ -1807,6 +1840,7 @@ workClose.addEventListener('click', (evt) => {
     if(player.race === 'Human'){
       if(player.clss === 'melee'){
         //Add picture number 2 here 
+        maleHumMel2.classList.add('display')
       } else if(player.clss === 'range'){
         //Add picture number 2 here 
       } else if(player.clss === 'magic'){
