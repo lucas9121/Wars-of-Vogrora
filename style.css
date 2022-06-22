@@ -1,5 +1,8 @@
+html{
+    background: black;
+}
 body {
-    margin: 0;
+    margin: 0 auto;
 }
 
 body > div {
@@ -70,7 +73,7 @@ div.create-char {
     display: flex;
     flex-direction: column;
     background-color: black;
-    line-height: 15px;
+    justify-content: space-between;
 }
 .create-char > h2 {
     font-size: 50px;
@@ -79,7 +82,7 @@ div.create-char {
 }
 .create-char > h4 {
     font-size: 30px;
-    margin: 50px 0px 20px 0;
+    margin: 50px 0 0 0;
     text-align: center;
     color: white;
 }
@@ -155,7 +158,10 @@ div#char-image > p {
 
 div#char-image > div{
     background: #0000007d;
-    min-height: 112px;
+    visibility: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 div#char-image > div > ul {
@@ -170,17 +176,24 @@ div#char-image > div > ul {
 
 div#char-image > div > p{
     margin: 0;
-    padding: 10px 0;
+    padding: 10px 20px;
     font-size: 1.5em;
     color: white;
+}
+
+div#char-image > div > p#stats-description {
+    position: absolute;
+    background: #0000007d;
+    top: 100%;
+    visibility: hidden;
 }
 
 /* Characters on Create Page */
 .male-human-melee{
     display: none;
-    position: absolute;
+    /* position: absolute;
     top: 17%;
-    left: 45%;
+    left: 45%; */
 }
 .male-elf-range {
     display: none;
