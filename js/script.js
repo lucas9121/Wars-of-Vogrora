@@ -19,6 +19,19 @@ const rangeBtn = document.querySelector('.char-class > button:nth-of-type(2)')
 const magicBtn = document.querySelector('.char-class > button:nth-of-type(3)')
 const createName = document.querySelector('.create-char > input:nth-of-type(1)')
 const createBtn = document.querySelector('.create-char > input:nth-of-type(2)')
+const raceDiv = document.querySelector('#char-image > div:nth-of-type(1)')
+const racePar = document.querySelector('#char-image > div:nth-of-type(1) > p')
+const intLi = document.querySelector('#char-image > div > ul > li:nth-of-type(1)')
+const int = document.querySelector('#Int')
+const staLi = document.querySelector('#char-image > div > ul > li:nth-of-type(2)')
+const sta = document.querySelector('#Sta')
+const recLi = document.querySelector('#char-image > div > ul > li:nth-of-type(3)')
+const rec = document.querySelector('#Rec')
+const classDiv = document.querySelector('#char-image > div:nth-of-type(2)')
+const classPar = document.querySelector('#char-image > div:nth-of-type(2) > p')
+const att = document.querySelector('#Att')
+const def = document.querySelector('#Def')
+const statDspt = document.querySelector('#stats-description')
 ///Character Images
 const maleHumMel = document.querySelector('.male-human-melee')
 const maleElfRng = document.querySelector('.male-elf-range')
@@ -782,7 +795,12 @@ humanBtn.addEventListener('click', (evt) => {
   createImg.classList.add('human-background')
   createImg.classList.remove('elf-background')
   createImg.classList.remove('dwarf-background')
+  raceDiv.style.visibility = 'visible'
+  racePar.innerHTML = "Humans are the most adaptable and ambitious people among the races. They have widely varying tastes, morals, and customs in the many different lands where they have settled. When they settle, though, they stay: they build cities to last for the ages, and great kingdoms that can persist for long centuries. An individual human might have a relatively short life span, but a human nation or culture preserves traditions with origins far beyond the reach of any single human's memory. They live fully in the present—making them well suited to the adventuring life, but also plan for the future, striving to leave a lasting legacy. Individually and as a group, humans are adaptable opportunists, and they stay alert to changing political and social dynamics. They seek to earn glory in the eyes of their fellows by amassing power, wealth, and fame. Due to their opportunist nature and ability to adapt humans have a higher intellect than the other races."
   player = new Human;
+  int.innerHTML = `${player.int}`
+  sta.innerHTML = `${player.sta}`
+  rec.innerHTML = `${player.rec}`
   //Characters Image
   maleHumMel.classList.remove('display')
   maleElfMgc.classList.remove('display')
@@ -800,7 +818,12 @@ elfBtn.addEventListener('click', (evt) => {
   createImg.classList.add('elf-background')
   createImg.classList.remove('human-background')
   createImg.classList.remove('dwarf-background')
+  raceDiv.style.visibility = 'visible'
+  racePar.innerHTML = "Elves live in the midst of ancient forests, where soft music drifts through the air and gentle fragrances waft on the breeze. They tend to remain aloof and unfazed by petty happenstance. When pursuing a goal, however, whether adventuring on a mission or learning a new skill or art, elves can be focused and relentless. Elves take up adventuring out of wanderlust. Since they are so long-lived, they can enjoy centuries of exploration and discovery. They dislike the pace of human society, which is both regimented from day to day but constantly changes over decades, so they find careers that let them travel freely and set their own pace. Some might join with rebels fighting against oppression, and others might become champions of just causes. Due to their longegivity elves have a higher recovery rate than the other races."
   player = new Elf;
+  int.innerHTML = `${player.int}`
+  sta.innerHTML = `${player.sta}`
+  rec.innerHTML = `${player.rec}`
   //Characters Image
   maleHumMel.classList.remove('display')
   maleElfMgc.classList.remove('display')
@@ -818,7 +841,12 @@ dwarfBtn.addEventListener('click', (evt) => {
   createImg.classList.add('dwarf-background')
   createImg.classList.remove('elf-background')
   createImg.classList.remove('human-background')
+  raceDiv.style.visibility = 'visible'
+  racePar.innerHTML = "Dwarves kingdoms are built among the roots of mountains, where they have carved great halls. They respect the traditions of their clans, tracing their ancestry back to the founding of their most ancient strongholds in the youth of the world, and do not abandon those traditions lightly. Part of those traditions is devotion to the gods of the dwarves, who uphold the dwarven ideals of industrious labor, skill in battle, and devotion to the forge. Dwarves who take up the adventuring life might be motivated by a desire to restore a clan's lost honor, avenge an ancient wrong his or her clan suffered, or earn a new place within the clan after having been exiled. Due to their ability to work under high pressures dwarves have a higher stamina than other races"
   player = new Dwarf;
+  int.innerHTML = `${player.int}`
+  sta.innerHTML = `${player.sta}`
+  rec.innerHTML = `${player.rec}`
   //Characters Image
   maleHumMel.classList.remove('display')
   maleElfMgc.classList.remove('display')
@@ -833,12 +861,16 @@ meleeBtn.addEventListener('click', (evt) => {
     meleeBtn.style.color = 'red';
     rangeBtn.style.color = 'white';
     magicBtn.style.color = 'white';
+    classDiv.style.visibility = 'visible'
+    classPar.innerHTML = 'Melee fighters are known for their strength in weilding heavy weaponry. Some of their common weapons include, Sowrd and Shield, Mace, and Axe. Due to their inability to fight from a distance melee fighters have focused on their defense skills by wearing heavy armor.'
   }
   if(player.race === 'Human'){
     createImg.classList.add('human-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('dwarf-background')
     player = new HumanMelee;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     //Images
     if(playerGender === 'Male'){
       //////Picture here//////
@@ -855,6 +887,8 @@ meleeBtn.addEventListener('click', (evt) => {
     createImg.classList.remove('human-background')
     createImg.classList.remove('dwarf-background')
     player = new ElfMelee;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     //Images
     if(playerGender === 'Male'){
       //remove female pictures(9)
@@ -880,6 +914,8 @@ meleeBtn.addEventListener('click', (evt) => {
     createImg.classList.remove('elf-background')
     createImg.classList.remove('human-background')
     player = new DwarfMelee;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     //Images
     if(playerGender === 'Male'){
       //remove female pictures(9)
@@ -906,12 +942,16 @@ rangeBtn.addEventListener('click', (evt) => {
     meleeBtn.style.color = 'white';
     rangeBtn.style.color = 'red';
     magicBtn.style.color = 'white';
+    classDiv.style.visibility = 'visible'
+    classPar.innerHTML = "Range fighters are adept with any weapon that can be fired from a distance. Their attacks can do some decent damage, but it's not the most powerful. They also wear light-weight armor, to help them move more freely in the battlefield which makes their defense roughly the same as their attack."
   }
   if(player.race === 'Human'){
     createImg.classList.add('human-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('dwarf-background')
     player = new HumanRange;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
@@ -934,6 +974,8 @@ rangeBtn.addEventListener('click', (evt) => {
     createImg.classList.remove('human-background')
     createImg.classList.remove('dwarf-background')
     player = new ElfRange;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
@@ -956,6 +998,8 @@ rangeBtn.addEventListener('click', (evt) => {
     createImg.classList.remove('elf-background')
     createImg.classList.remove('human-background')
     player = new DwarfRange;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
@@ -980,12 +1024,16 @@ magicBtn.addEventListener('click', (evt) => {
     meleeBtn.style.color = 'white';
     rangeBtn.style.color = 'white';
     magicBtn.style.color = 'red';
+    classDiv.style.visibility = 'visible'
+    classPar.innerHTML = "Magic users have the greatest attack of any other fighter. Their affinity to magic allows them the ability to summon extremely powerful attacks through their staff. However, they are unable to wear most armor types as the materials it is made of would interrupt a magic users control over the flow of magic in their body."
   }
   if(player.race === 'Human'){
     createImg.classList.add('human-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('dwarf-background')
     player = new HumanMagic;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
@@ -1008,6 +1056,8 @@ magicBtn.addEventListener('click', (evt) => {
     createImg.classList.remove('human-background')
     createImg.classList.remove('dwarf-background')
     player = new ElfMagic;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
@@ -1031,6 +1081,8 @@ magicBtn.addEventListener('click', (evt) => {
     createImg.classList.remove('elf-background')
     createImg.classList.remove('human-background')
     player = new DwarfMagic;
+    att.innerHTML = `${player.attack}`
+    def.innerHTML = `${player.defense}`
     if(playerGender === 'Male'){
       //remove female pictures(9)
       femaleHumRng.classList.remove('display')
@@ -1047,6 +1099,37 @@ magicBtn.addEventListener('click', (evt) => {
       //remove fighting class pictures(2)
     }
   }
+})
+
+intLi.addEventListener('mouseover', () => {
+  statDspt.style.visibility = 'visible'
+  statDspt.innerHTML = "Intellect increases the amount of money earned while working"
+})
+
+intLi.addEventListener('mouseout', () => {
+  statDspt.style.visibility = 'hidden'
+})
+
+staLi.addEventListener('mouseover', () => {
+  statDspt.style.visibility = 'visible'
+  statDspt.style.left = '25%'
+  statDspt.innerHTML = "Stamina consumes less energy while working, allowing you to work longer"
+})
+
+staLi.addEventListener('mouseout', () => {
+  statDspt.style.visibility = 'hidden'
+  statDspt.style.left = '0'
+})
+
+recLi.addEventListener('mouseover', () => {
+  statDspt.style.visibility = 'visible'
+  statDspt.style.left = '62%'
+  statDspt.innerHTML = "Recovery replenishes energy faster when consuming food"
+})
+
+recLi.addEventListener('mouseout', () => {
+  statDspt.style.visibility = 'hidden'
+  statDspt.style.left = '0'
 })
 
 createBtn.addEventListener('click', (evt) => {
