@@ -40,13 +40,14 @@ const femaleHumRng = document.querySelector('.female-human-range')
 
 ////////////////// Main page DOM ///////////////////////////////////////////////////////////
 const mainPg = document.querySelector('#main')
+const gameExit = document.querySelector('.character > i')
 const charInfo = document.querySelector('.char-info')
 const charName = document.querySelector('.char-info > .name')
 const charRace = document.querySelector('.char-info > .race')
 const charClass = document.querySelector('.char-info > .class')
 const charEnergy = document.querySelector('.char-info > .energy')
 const charMoney = document.querySelector('.char-info > .money')
-const charStats = document.querySelector('.char-info > .stat')
+const charStats = document.querySelector('.stat')
 const storeBtn = document.querySelector('#store')
 const fightBtn = document.querySelector('#fight')
 const eatBtn = document.querySelector('#eat')
@@ -1258,6 +1259,9 @@ createBtn.addEventListener('click', (evt) => {
 
 
 ////////////////////////////// Main Page Buttons //////////////////////////////////////
+gameExit.addEventListener('click', () => {
+  document.location.reload(true)
+})
 charInfo.addEventListener('mouseover', (showStats))
 charInfo.addEventListener('mouseout', (evt) => {
   charStats.textContent = ''
