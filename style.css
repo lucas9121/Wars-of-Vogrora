@@ -229,9 +229,38 @@ div.character {
     display: flex;
     flex-direction: column;
     width: fit-content;
-    justify-content: flex-end;
+    justify-content: space-around;
     font-size: 1.5em;
     background-color: rgb(0 218 253 / 35%);
+    background: #0000007d;
+    color: white;
+    height: 200px;
+    padding: 10px;
+    position: relative;
+}
+div.character > i{
+    cursor: pointer;
+}
+div.character > i:hover{
+    color: red;
+}
+div.character > small {
+    position: absolute;
+    z-index: 2;
+    top: 8px;
+    left: 45px;
+    visibility: hidden;
+}
+div.character > i:hover ~ small {
+    visibility: visible;
+}
+div.character > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+div.character > div > div {
+    padding: 0 20px;
 }
 div.buttons {
     display: flex;;
@@ -240,31 +269,39 @@ div.buttons {
     padding: 3px 0px;
 }
 
+div#char-image2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Characters on Main Page */
 .male-human-melee2{
     display: none;
-    position: absolute;
+    /* position: absolute;
     top: 20%;
-    left: 40%;
+    left: 40%; */
 }
 .male-elf-range2 {
     display: none;
-    position: absolute;
+    /* position: absolute;
     top: 20%;
-    left: 40%;
+    left: 40%; */
 }
 .male-elf-magic2 {
     display: none;
-    position: absolute;
+    /* position: absolute;
     top: 20%;
-    left: 40%;
+    left: 40%; */
 }
 .female-human-range2 {
     display: none;
-    position: absolute;
+    max-width: 100%;
+    max-height: 618px;
+    /* position: absolute;
     height: 700px;
     left: 20%;
-    bottom: 12%;
+    bottom: 12%; */
 }
 
 
