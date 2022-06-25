@@ -429,6 +429,8 @@ div.fight {
 }
 .fight > div.fight-animation{
     flex: 1;
+    display: flex;
+    align-items: flex-end;
 }
 .fight > div:nth-of-type(2) {
     display: flex;
@@ -465,18 +467,18 @@ div.fight {
     display: none;
     height: 300px;
     width: 300px;
-    position: absolute;
+    /* position: absolute;
     top: 41%;
-    left: 11%;
+    left: 11%; */
 }
 
 .male-human-melee-enemy {
     display: none;
     height: 300px;
     width: 300px;
-    position: absolute;
-    top: 41%;
-    left: 77%;
+    position: relative;
+    /* top: 41%; */
+    left: 65%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
@@ -485,18 +487,18 @@ div.fight {
     display: none;
     height: 300px;
     width: 300px;
-    position: absolute;
+    /* position: relative;
     top: 41%;
-    left: 9%;
+    left: 9%; */
 }
 
 .male-elf-range-enemy {
     display: none;
     height: 300px;
     width: 300px;
-    position: absolute;
-    top: 41%;
-    left: 80%;
+    position: relative;
+    /* top: 41%; */
+    left: 65%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
@@ -505,18 +507,18 @@ div.fight {
     display: none;
     height: 300px;
     width: 300px;
-    position: absolute;
+    /* position: absolute;
     top: 40%;
-    left: 7%;
+    left: 7%; */
 }
 
 .male-elf-magic-enemy {
     display: none;
     height: 300px;
     width: 300px;
-    position: absolute;
-    top: 40%;
-    left: 80%;
+    position: relative;
+    /* top: 40%; */
+    left: 65%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
@@ -524,17 +526,17 @@ div.fight {
     display: none;
     height: 320px;
     width: 550px;
-    position: absolute;
+    /* position: absolute;
     top: 39%;
-    left: 3%;
+    left: 3%; */
 }
 .female-human-range-enemy {
     display: none;
     height: 320px;
     width: 550px;
-    position: absolute;
-    top: 39%;
-    left: 72%;
+    position: relative;
+    /* top: 39%; */
+    left: 65%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
