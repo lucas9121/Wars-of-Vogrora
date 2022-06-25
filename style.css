@@ -9,6 +9,10 @@ body > div {
     height: 100vh;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 
 /* /////////Title Page///////////// */
 body > div#first {
@@ -142,6 +146,10 @@ div.create-char {
     background-color: transparent;
 }
 
+.create-char > input:nth-of-type(2):hover {
+    cursor: pointer;
+}
+
 div#char-image {
     flex: 1;
     background-color: black;
@@ -240,6 +248,7 @@ div.character {
 }
 div.character > i{
     cursor: pointer;
+    width: fit-content;
 }
 div.character > i:hover{
     color: red;
