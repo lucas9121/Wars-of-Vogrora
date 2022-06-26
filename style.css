@@ -431,6 +431,29 @@ div.fight {
     flex: 1;
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
+}
+.fight-animation > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+progress {
+    width: 200px;
+    background: none;
+    color: green;
+}
+  
+progress::-moz-progress-bar {
+    background: red;
+}
+  
+progress::-webkit-progress-value {
+    background: green;
+}
+  
+progress::-webkit-progress-bar {
+    background: red;
 }
 .fight > div:nth-of-type(2) {
     display: flex;
@@ -467,18 +490,14 @@ div.fight {
     display: none;
     height: 300px;
     width: 300px;
-    /* position: absolute;
-    top: 41%;
-    left: 11%; */
+    padding-left: 30%;
 }
 
 .male-human-melee-enemy {
     display: none;
     height: 300px;
     width: 300px;
-    position: relative;
-    /* top: 41%; */
-    left: 65%;
+    padding-left: 30%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
@@ -487,18 +506,12 @@ div.fight {
     display: none;
     height: 300px;
     width: 300px;
-    /* position: relative;
-    top: 41%;
-    left: 9%; */
 }
 
 .male-elf-range-enemy {
     display: none;
     height: 300px;
     width: 300px;
-    position: relative;
-    /* top: 41%; */
-    left: 65%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
@@ -507,36 +520,24 @@ div.fight {
     display: none;
     height: 300px;
     width: 300px;
-    /* position: absolute;
-    top: 40%;
-    left: 7%; */
 }
 
 .male-elf-magic-enemy {
     display: none;
     height: 300px;
     width: 300px;
-    position: relative;
-    /* top: 40%; */
-    left: 65%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
 .female-human-range3 {
     display: none;
-    height: 320px;
-    width: 550px;
-    /* position: absolute;
-    top: 39%;
-    left: 3%; */
+    height: 300px;
+    width: 260px;
 }
 .female-human-range-enemy {
     display: none;
-    height: 320px;
-    width: 550px;
-    position: relative;
-    /* top: 39%; */
-    left: 65%;
+    height: 300px;
+    width: 260px;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
@@ -547,16 +548,16 @@ div.fight {
     height: 25px;
     width: 110px;
     position: absolute;
-    bottom: 42%;
-    left: 22%;
+    bottom: 38%;
+    left: 20%;
     opacity: 0;
 }
 .spell {
     /* display: none; */
     width: 90px;
     position: absolute;
-    bottom: 42%;
-    left: 22%;
+    bottom: 37%;
+    left: 17%;
     opacity: 0;
 }
 
@@ -578,25 +579,25 @@ div.fight {
     animation-duration: 1s;
 }
 @keyframes arrow-animation {
-    0% {left: 22%;}
+    0% {left: 20%;}
     5%{opacity: 1;}
     90% {opacity: 1;}
-    100% {left: 78%; opacity: 0;}
+    100% {left: 79%; opacity: 0;}
 }
 @keyframes enemy-arrow-animation {
-    0% {left: 74%; filter: hue-rotate(110deg); transform: rotateY(180deg);}
+    0% {left: 75%; filter: hue-rotate(110deg); transform: rotateY(180deg);}
     5%{opacity: 1;}
     90% {opacity: 1;}
-    100% {left: 18%; opacity: 0; filter: hue-rotate(110deg); transform: rotateY(180deg);}
+    100% {left: 16%; opacity: 0; filter: hue-rotate(110deg); transform: rotateY(180deg);}
 }
 @keyframes spell-animation {
-    0% {left: 22%;}
+    0% {left: 17%;}
     5%{opacity: 1;}
     90% {opacity: 1;}
-    100% {left: 82%; opacity: 0;}
+    100% {left: 80%; opacity: 0;}
 }
 @keyframes enemy-spell-animation {
-    0% {left: 74%; filter: hue-rotate(110deg);}
+    0% {left: 78%; filter: hue-rotate(110deg);}
     5% {opacity: 1;}
     90% {opacity: 1;}
     100% {left: 16%; opacity: 0; filter: hue-rotate(110deg);}
