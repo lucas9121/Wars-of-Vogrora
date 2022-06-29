@@ -73,6 +73,8 @@ const atckBtn = document.querySelector('.fight > div:nth-of-type(2) > button:nth
 const retreatBtn = document.querySelector('.fight > div:nth-of-type(2) > button:nth-of-type(2)')
 const firstTxt = document.querySelector('#first-text')
 const secTxt = document.querySelector('#second-text')
+const plHealthBar = document.querySelector('#pl-health')
+const enHealthBar = document.querySelector('#en-health')
 ///Fight Images
 const maleHumMel3 = document.querySelector('.male-human-melee3')
 const maleHumMelEn = document.querySelector('.male-human-melee-enemy')
@@ -172,6 +174,7 @@ class Character {
           }
         }
       }
+      enHealthBar.value = other.hp
       //player attack notification
       const plLi1 = document.createElement('li')
       plLi1.textContent = `${other.name} hp is now ${other.hp}`
@@ -246,6 +249,7 @@ class Character {
             }
           }
         }
+        plHealthBar.value = this.hp
         //enemy attack notification 
         const enLi1 = document.createElement('li')
         enLi1.textContent = `${this.name} hp is now ${this.hp}`
@@ -1414,17 +1418,8 @@ fightBtn.addEventListener('mouseout', (evt) => {
 })
 
 fightBtn.addEventListener('click', (evt) => {
-  setTimeout(() => {
-    console.log(`Player class is ${player.clss}`)
-    console.log(`Player attack is ${player.attack}`)
-    console.log(`Player defense is ${player.defense}`)
-    // console.log(`Enemy is ${enemyArr[enemyArr.length - 1]}`)
-    console.log(`Enemy race is ${enemyArr[enemyArr.length - 1].race}`)
-    console.log(`Enemy class is ${enemyArr[enemyArr.length - 1].clss}`)
-    console.log(`Enemy gender is ${enemyArr[enemyArr.length - 1].gender}`)
-    console.log(`Enemy attack is ${enemyArr[enemyArr.length - 1].attack}`)
-    console.log(`Enemy defense is ${enemyArr[enemyArr.length - 1].defense}`)
-  }, 0500)
+  plHealthBar.value = player.hp
+  enHealthBar.value = enemyArr[enemyArr.length - 1].hp
   if(enemyArr.length === 0){  //replay option when last boss defeated
     enemyArr = [finalBoss, miniBoss1, humanEnemy1, humanEnemy2, humanEnemy3, humanEnemy4, humanEnemy5, miniBoss2, elfEnemy1, elfEnemy2, elfEnemy3, elfEnemy4, elfEnemy5, miniBoss3, dwarEnemy1, dwarEnemy2, dwarEnemy3, dwarEnemy4, dwarEnemy5]
     enemyArr.forEach((element) => {
@@ -1611,16 +1606,6 @@ fightBtn.addEventListener('click', (evt) => {
 })
 
 atckBtn.addEventListener('click', (evt) => {
-  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  player.attack = 70
-  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
   if(player.hp > 0 && enemyArr[enemyArr.length - 1].hp > 0){
     atckBtn.disabled = true
     retreatBtn.disabled = true
