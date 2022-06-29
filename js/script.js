@@ -50,6 +50,7 @@ const charMoney = document.querySelector('.char-info > .money')
 const charStats = document.querySelector('.stat')
 const storeBtn = document.querySelector('#store')
 const fightBtn = document.querySelector('#fight')
+const fightsLeft = document.querySelector('#fights-left')
 const eatBtn = document.querySelector('#eat')
 const workBtn = document.querySelector('#work')
 ///Main Images
@@ -633,6 +634,8 @@ const underlineStore = () => {
 }
 const underlineFight = () => {
   fightBtn.style.textDecoration = 'underline'
+  fightsLeft.style.display = 'block'
+  fightsLeft.innerHTML = `${enemyArr.length} fights remaining`
 }
 const underlineWork = () => {
   workBtn.style.textDecoration = 'underline'
@@ -1154,7 +1157,7 @@ createBtn.addEventListener('click', (evt) => {
     charMoney.textContent = player.money
     mainPg.style.display = 'flex'
     createPg.style.display = 'none'
-    fightBtn.textContent = `Fight(${enemyArr.length})`
+    // fightBtn.textContent = `Fight(${enemyArr.length})`
     //Images
     if(playerGender === 'Male'){
       player.gender = 'Male' //character constructor change
@@ -1415,9 +1418,19 @@ storeClose.addEventListener('click', (evt) => {
 fightBtn.addEventListener('mouseover', (underlineFight))
 fightBtn.addEventListener('mouseout', (evt) => {
   fightBtn.style.textDecoration = 'none'
+  fightsLeft.style.display = 'none'
 })
 
 fightBtn.addEventListener('click', (evt) => {
+  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE Down ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  player.attack = 100
+  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////// DELETE  Up ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   plHealthBar.value = player.hp
   enHealthBar.value = enemyArr[enemyArr.length - 1].hp
   if(enemyArr.length === 0){  //replay option when last boss defeated
@@ -1690,13 +1703,10 @@ fightClose.addEventListener('click', (evt) => {
     }
 
     //Final Battle: before and after
-    if(enemyArr.length === 1){
-      fightBtn.textContent = `Final Battle`
-    } else if(enemyArr.length === 0){ //win
-      fightBtn.textContent = `Replay`
-    } else {
-      fightBtn.textContent = `Fight(${enemyArr.length})`
-    }
+    if(enemyArr.length === 1)fightBtn.textContent = `Final Battle`
+
+    //Player won
+    if(enemyArr.length === 0)fightBtn.textContent = `Replay`
     
     //Images
     if(player.gender === 'Male'){
