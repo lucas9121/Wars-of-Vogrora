@@ -272,10 +272,23 @@ div.character > div > div {
     padding: 0 20px;
 }
 div.buttons {
+    position: relative;
     display: flex;;
     justify-content: stretch;
     background-color: black;
     padding: 3px 0px;
+}
+#fights-left {
+    display: none;
+    font-size: 2rem;
+    margin: 0;
+    color: white;
+    position: absolute;
+    z-index: 2;
+    bottom: 80%;
+    left: 46%;
+    background: #0000007d;
+    padding: 5px;
 }
 
 div#char-image2 {
