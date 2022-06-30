@@ -1,33 +1,29 @@
-# Wars of Vogrora
+# [Wars of Vogrora](https://lucas9121.github.io/Wars-of-Vogrora/)
 
-Game description:
-Player can choose one of three races when creating a Character (elf, human, dwarf) that have default skills to them (recovery, stamina, intelect). The skills can be seen on the main page ny hovering on the character's name on the top left. Each race can choose a class speciealty(range, melee, magic) before starting the game. Battle main vilain and his army (faction with member of each race) with your character. There are 10 battles before reaching main vilain. The battle right before the main villain is a mini boss that is stronger than the previous 9 enemies. Main vilain has higher hp, attack, and defense then other enemies. Each race has a particular skill they are better in. The skill influences their advantage on work/eat results. Work grants money and uses energy. The only way to replinish energy is by eating food. Food has to be bought with some of the money you have. Money can also be used to purchase potions in th store that will help you in a battle. You will need at least two potions to defeat the mini boss. You will need at least 9 potions (combination of 5 atk, 4 def or 4 atk, 5 def) to defeat final boss. After defeating the final boss you have the option to replay the campaign by clicking on the fight button again (which will now say replay). If you click on it all of your stats, money and energy is reset. 
+## Game description:
+Wars of Volgora is an turn-based style RPG game. Become the hero that fights the forces of evil, and save your planet from complete destruction. 
 
-create page
-- choose a gender, race, and fighting class, as well as input your name
-            
-attack (hp):
-- attack power is 10 + (player attack - enemy defense)
-- Magic > attack
-- Melee > defense
-- Range middle
-work (energy):
-- grants money but it costs energy
-- recovery = replenish energy faster (less money spent on eating) 
-- intellect = more money earned while working
-- stamina = less energy spent while working (can work longer)
-- elves > recovery
-- dwarves > stamina 
-- humans > intelect 
-Eat (Money):
-- grants energy but it costs money
-store:
-- can purchase potions to aid in a fight
-- atck potion = +1 atack (max 5)
-- def potion = +1 defense (max 5)
-- You will need at least two potions to defeat the mini boss
-- You will need at least 9 potions (5atk, 4def or vice versa) to defeat final boss
+![TitlePage](/images/WOV1.png)
 
+In the create page you can choose what type of hero you would like to be. There are a total of 18 different combinations to choose from. The stats and background of the characters change depending on the race and fighting style you choose. Hovering over individual stats will also give a short description of it and what it is used for. 
 
-## Link
-https://lucas9121.github.io/Wars-of-Vogrora/
+![CreatePage](/images/WOV2.png)
+
+Once You create your character you will be redirected to the main page. There you can see your player information on the top left. Hovering over the information will display aditional stats for your character. You can also quit the game by clicking on the icon on the top left.
+
+![MainPage](/images/WOV3.png)
+
+![stats](/images/WOV6.png)
+
+![quit](/images/WOV7.png)
+
+You can click on the store to buy potions that can increase your attack or defense. There is a max number of potions that you can buy for each stat. 
+
+![store](/images/WOV4.png)
+
+The fight button will take to fight the forces of evil. if you hover over the fight button you can also check how many fights you have left before the final boss. The fights are separated by different races and each one has their own mini boss. After defeating all mini bosses you have to face the final boss.
+
+![fight](/images/WOV5.png)
+
+Lastly, you can click on the work button to earn money to spend on the store. However, working will cost energy which can only be replenish by eating food (eat button). Eating food will cost a portion of the money you have earned working. Each race have their advantages and disadvantages in the work/eat dynamic. 
+
