@@ -225,6 +225,18 @@ div#char-image > div > p#stats-description {
     bottom: 15%; */
 }
 
+.female-human-melee{
+    display: none;
+    max-width: 100%;
+    max-height: 618px;
+}
+
+.female-human-magic{
+    display: none;
+    max-width: 100%;
+    max-height: 618px;
+}
+
 
 
 /* /////////Main Page///////////// */
@@ -324,6 +336,18 @@ div#char-image2 {
     height: 700px;
     left: 20%;
     bottom: 12%; */
+}
+
+.female-human-melee2{
+    display: none;
+    max-width: 100%;
+    max-height: 618px;
+}
+
+.female-human-magic2{
+    display: none;
+    max-width: 100%;
+    max-height: 618px;
 }
 
 
@@ -551,6 +575,32 @@ progress::-webkit-progress-bar {
     display: none;
     height: 300px;
     width: 260px;
+    transform: rotateY(180deg);
+    filter: hue-rotate(110deg);
+}
+
+.female-human-melee3{
+    display: none;
+    height: 300px;
+    width: 100%;
+}
+.female-human-melee-enemy{
+    display: none;
+    height: 300px;
+    width: 100%;
+    transform: rotateY(180deg);
+    filter: hue-rotate(110deg);
+}
+
+.female-human-magic3{
+    display: none;
+    height: 300px;
+    width: 100%;
+}
+.female-human-magic-enemy{
+    display: none;
+    height: 300px;
+    width: 100%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
