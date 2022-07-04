@@ -689,56 +689,36 @@ maleBtn.addEventListener('click', (evt) => {
     createImg.classList.add('human-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('dwarf-background')
-    //Remove all Elf and Dwarf images(6)
-    maleElfMgc.classList.remove('display')
-    maleElfRng.classList.remove('display')
     if(player.clss === 'melee'){
       maleHumMel.classList.add('display')
-      //remove other fight class (2)
     } else if(player.clss === 'range'){
       maleHumRng.classList.add('display')
-      //remove other fight class (2)
     } else if(player.clss === 'magic'){
       //Picture here
-      //remove other fight class (2)
     }
   }
   if(player.race === 'Elf'){
     createImg.classList.add('elf-background')
     createImg.classList.remove('human-background')
     createImg.classList.remove('dwarf-background')
-    //remove all Human and Dwarf images(6)
-    maleHumMel.classList.remove('display')
     if(player.clss === 'melee'){
       //Picture here
-      //remove other fight class (2)
     } else if(player.clss === 'range'){
       maleElfRng.classList.add('display')
-      //remove other fight class (2)
-      maleElfMgc.classList.remove('display')
     } else if(player.clss === 'magic'){
       maleElfMgc.classList.add('display')
-      //remove other fight class (2)
-      maleElfRng.classList.remove('display')
     }
   }
   if(player.race === 'Dwarf'){
     createImg.classList.add('dwarf-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('human-background')
-    //Remove all Elf and Human images(6)
-    maleElfMgc.classList.remove('display')
-    maleElfRng.classList.remove('display')
-    maleHumMel.classList.remove('display')
     if(player.clss === 'melee'){
       //Picture here
-      //remove other fight class (2)
     } else if(player.clss === 'range'){
       //Picture here
-      //remove other fight class (2)
     } else if(player.clss === 'magic'){
       //Picture here
-      //remove other fight class (2)
     }
   }
 })
@@ -772,8 +752,6 @@ femaleBtn.addEventListener('click', (evt) => {
     createImg.classList.add('elf-background')
     createImg.classList.remove('human-background')
     createImg.classList.remove('dwarf-background')
-    //Remove all Human and Dwarf images(6)
-    femaleHumRng.classList.remove('display')
     if(player.clss === 'melee'){
       //Picture here
     } else if(player.clss === 'range'){
@@ -786,7 +764,6 @@ femaleBtn.addEventListener('click', (evt) => {
     createImg.classList.add('dwarf-background')
     createImg.classList.remove('elf-background')
     createImg.classList.remove('human-background')
-    femaleHumRng.classList.remove('display')
     if(player.clss === 'melee'){
       //Picture here
     } else if(player.clss === 'range'){
