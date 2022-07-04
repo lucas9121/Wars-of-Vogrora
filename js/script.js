@@ -421,7 +421,7 @@ class Character {
 class FinalBoss extends Character {
   constructor(name){
     super(name)
-    this.name = 'Final Boss'
+    this.name = 'Azrail'
     this.race = this.race[0]
     this.hp = 150
     this.attack = 15
@@ -433,7 +433,7 @@ class FinalBoss extends Character {
 class MiniBoss1 extends Character {
   constructor(name,gender){
     super(name,gender)
-    this.name = 'Mini Boss'
+    this.name = 'Nerezza'
     this.gender = 'Female'
     this.attack = 13
     this.defense = 13
@@ -444,7 +444,7 @@ class MiniBoss1 extends Character {
 class MiniBoss2 extends Character {
   constructor(name,gender){
     super(name,gender)
-    this.name = 'Mini Boss'
+    this.name = 'Lamia'
     this.gender = 'Female'
     this.attack = 13
     this.defense = 13
@@ -455,7 +455,7 @@ class MiniBoss2 extends Character {
 class MiniBoss3 extends Character {
   constructor(name,gender){
     super(name,gender)
-    this.name = 'Mini Boss'
+    this.name = 'Sarka'
     this.gender = 'Female'
     this.attack = 13
     this.defense = 13
@@ -467,7 +467,7 @@ class HumanEnemy extends Character{
   constructor(name){
     super(name)
     this.race = this.race[0]
-    this.name = `${this.race} minor enemy`
+    this.name = `${this.race} minion`
     this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
   }
 }
@@ -475,7 +475,7 @@ class ElfEnemy extends Character{
   constructor(name){
     super(name)
     this.race = this.race[1]
-    this.name = `${this.race} minor enemy`
+    this.name = `${this.race} minion`
     this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
   }
 }
@@ -483,7 +483,7 @@ class DwarfEnemy extends Character{
   constructor(name){
     super(name)
     this.race = this.race[2]
-    this.name = `${this.race} minor enemy`
+    this.name = `${this.race} minion`
     this.clss = this.clss[Math.floor(Math.random() * this.clss.length)]
   }
 }
