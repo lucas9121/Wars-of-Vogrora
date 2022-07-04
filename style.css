@@ -203,6 +203,11 @@ div#char-image > div > p#stats-description {
     top: 17%;
     left: 45%; */
 }
+.male-human-range{
+    display: none;
+    max-width: 100%;
+    max-height: 618px;
+}
 .male-elf-range {
     display: none;
     /* position: absolute;
@@ -315,6 +320,11 @@ div#char-image2 {
     /* position: absolute;
     top: 20%;
     left: 40%; */
+}
+.male-human-range2{
+    display: none;
+    max-width: 100%;
+    max-height: 618px;
 }
 .male-elf-range2 {
     display: none;
@@ -535,6 +545,20 @@ progress::-webkit-progress-bar {
     height: 300px;
     width: 300px;
     padding-left: 30%;
+    transform: rotateY(180deg);
+    filter: hue-rotate(110deg);
+}
+
+.male-human-range3{
+    display: none;
+    height: 300px;
+    width: 100%;
+}
+
+.male-human-range-enemy{
+    display: none;
+    height: 300px;
+    width: 100%;
     transform: rotateY(180deg);
     filter: hue-rotate(110deg);
 }
