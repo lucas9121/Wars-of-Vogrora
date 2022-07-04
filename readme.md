@@ -23,7 +23,7 @@ You can click on the store to buy potions that can increase your attack or defen
 
 The fight button will take to fight the forces of evil. if you hover over the fight button you can also check how many fights you have left before the final boss. The fights are separated by different races and each one has their own mini boss. After defeating all mini bosses you have to face the final boss.
 
-![fight](/images/WOV5.png)
+![fight](/images/WOV8.png)
 
-Lastly, you can click on the work button to earn money to spend on the store. However, working will cost energy which can only be replenish by eating food (eat button). Eating food will cost a portion of the money you have earned working. Each race have their advantages and disadvantages in the work/eat dynamic. 
+Lastly, you can click on the work button to earn money to spend on the store. However, working will cost energy which, can only be replenish by eating food (eat button). Eating food will cost a portion of the money you have earned working. Each race have their advantages and disadvantages in the work/eat dynamic. 
 
